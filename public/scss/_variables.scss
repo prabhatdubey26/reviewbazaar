@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+// scss-docs-start theme-color-variables
+$primary:       #1967d2;
+$secondary:     #0a54bc;
+$light:         #f1f7ff;
+$danger:        #f70000;
+$dark:          #1b1b1c;
+// scss-docs-end theme-color-variables
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+@keyframes jumpAni{
+
+0% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+40% {
+  -webkit-transform: translateY(-30px);
+  transform: translateY(-30px);
+}
+100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+}
+@keyframes dance{
+0% {
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+100% {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+}

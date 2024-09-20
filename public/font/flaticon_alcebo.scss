@@ -1,0 +1,121 @@
+$flaticon_alcebo-font: "flaticon_alcebo";
+
+@font-face {
+    font-family: $flaticon_alcebo-font;
+    src: url("./flaticon_alcebo.woff2?abaf19d0bb12e1c3606a8b7a2a5add05") format("woff2"),
+url("./flaticon_alcebo.woff?abaf19d0bb12e1c3606a8b7a2a5add05") format("woff"),
+url("./flaticon_alcebo.eot?abaf19d0bb12e1c3606a8b7a2a5add05#iefix") format("embedded-opentype"),
+url("./flaticon_alcebo.ttf?abaf19d0bb12e1c3606a8b7a2a5add05") format("truetype"),
+url("./flaticon_alcebo.svg?abaf19d0bb12e1c3606a8b7a2a5add05#flaticon_alcebo") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_alcebo !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon_alcebo-map: (
+    "right-arrow": "\f101",
+    "right-arrow-1": "\f102",
+    "chevron": "\f103",
+    "star": "\f104",
+    "bank": "\f105",
+    "graduating-student": "\f106",
+    "facebook": "\f107",
+    "twitter": "\f108",
+    "photo": "\f109",
+    "youtube": "\f10a",
+    "logo": "\f10b",
+    "plane": "\f10c",
+    "armchair": "\f10d",
+    "jewelry": "\f10e",
+    "clean-clothes": "\f10f",
+    "responsive": "\f110",
+    "weight": "\f111",
+    "right-up": "\f112",
+    "pin": "\f113",
+    "telephone": "\f114",
+    "envelope": "\f115",
+    "globe": "\f116",
+    "rate": "\f117",
+    "visibility": "\f118",
+);
+
+.flaticon-right-arrow:before {
+    content: map-get($flaticon_alcebo-map, "right-arrow");
+}
+.flaticon-right-arrow-1:before {
+    content: map-get($flaticon_alcebo-map, "right-arrow-1");
+}
+.flaticon-chevron:before {
+    content: map-get($flaticon_alcebo-map, "chevron");
+}
+.flaticon-star:before {
+    content: map-get($flaticon_alcebo-map, "star");
+}
+.flaticon-bank:before {
+    content: map-get($flaticon_alcebo-map, "bank");
+}
+.flaticon-graduating-student:before {
+    content: map-get($flaticon_alcebo-map, "graduating-student");
+}
+.flaticon-facebook:before {
+    content: map-get($flaticon_alcebo-map, "facebook");
+}
+.flaticon-twitter:before {
+    content: map-get($flaticon_alcebo-map, "twitter");
+}
+.flaticon-photo:before {
+    content: map-get($flaticon_alcebo-map, "photo");
+}
+.flaticon-youtube:before {
+    content: map-get($flaticon_alcebo-map, "youtube");
+}
+.flaticon-logo:before {
+    content: map-get($flaticon_alcebo-map, "logo");
+}
+.flaticon-plane:before {
+    content: map-get($flaticon_alcebo-map, "plane");
+}
+.flaticon-armchair:before {
+    content: map-get($flaticon_alcebo-map, "armchair");
+}
+.flaticon-jewelry:before {
+    content: map-get($flaticon_alcebo-map, "jewelry");
+}
+.flaticon-clean-clothes:before {
+    content: map-get($flaticon_alcebo-map, "clean-clothes");
+}
+.flaticon-responsive:before {
+    content: map-get($flaticon_alcebo-map, "responsive");
+}
+.flaticon-weight:before {
+    content: map-get($flaticon_alcebo-map, "weight");
+}
+.flaticon-right-up:before {
+    content: map-get($flaticon_alcebo-map, "right-up");
+}
+.flaticon-pin:before {
+    content: map-get($flaticon_alcebo-map, "pin");
+}
+.flaticon-telephone:before {
+    content: map-get($flaticon_alcebo-map, "telephone");
+}
+.flaticon-envelope:before {
+    content: map-get($flaticon_alcebo-map, "envelope");
+}
+.flaticon-globe:before {
+    content: map-get($flaticon_alcebo-map, "globe");
+}
+.flaticon-rate:before {
+    content: map-get($flaticon_alcebo-map, "rate");
+}
+.flaticon-visibility:before {
+    content: map-get($flaticon_alcebo-map, "visibility");
+}

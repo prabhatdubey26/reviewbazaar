@@ -1,0 +1,104 @@
+/*!
+*    ______ _       _   _
+*    |  ____| |     | | (_)
+*    | |__  | | __ _| |_ _  ___ ___  _ __
+*    |  __| | |/ _` | __| |/ __/ _ \| '_ \
+*    | |    | | (_| | |_| | (_| (_) | | | |
+*    |_|    |_|\__,_|\__|_|\___\___/|_| |_|
+*
+*         https://www.flaticon.com
+*/
+
+@font-face {
+    font-family: "flaticon_alcebo";
+    src: url("./flaticon_alcebo.woff2?abaf19d0bb12e1c3606a8b7a2a5add05") format("woff2"),
+url("./flaticon_alcebo.woff?abaf19d0bb12e1c3606a8b7a2a5add05") format("woff"),
+url("./flaticon_alcebo.eot?abaf19d0bb12e1c3606a8b7a2a5add05#iefix") format("embedded-opentype"),
+url("./flaticon_alcebo.ttf?abaf19d0bb12e1c3606a8b7a2a5add05") format("truetype"),
+url("./flaticon_alcebo.svg?abaf19d0bb12e1c3606a8b7a2a5add05#flaticon_alcebo") format("svg")
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_alcebo !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-right-arrow:before {
+    content: "\f101";
+}
+.flaticon-right-arrow-1:before {
+    content: "\f102";
+}
+.flaticon-chevron:before {
+    content: "\f103";
+}
+.flaticon-star:before {
+    content: "\f104";
+}
+.flaticon-bank:before {
+    content: "\f105";
+}
+.flaticon-graduating-student:before {
+    content: "\f106";
+}
+.flaticon-facebook:before {
+    content: "\f107";
+}
+.flaticon-twitter:before {
+    content: "\f108";
+}
+.flaticon-photo:before {
+    content: "\f109";
+}
+.flaticon-youtube:before {
+    content: "\f10a";
+}
+.flaticon-logo:before {
+    content: "\f10b";
+}
+.flaticon-plane:before {
+    content: "\f10c";
+}
+.flaticon-armchair:before {
+    content: "\f10d";
+}
+.flaticon-jewelry:before {
+    content: "\f10e";
+}
+.flaticon-clean-clothes:before {
+    content: "\f10f";
+}
+.flaticon-responsive:before {
+    content: "\f110";
+}
+.flaticon-weight:before {
+    content: "\f111";
+}
+.flaticon-right-up:before {
+    content: "\f112";
+}
+.flaticon-pin:before {
+    content: "\f113";
+}
+.flaticon-telephone:before {
+    content: "\f114";
+}
+.flaticon-envelope:before {
+    content: "\f115";
+}
+.flaticon-globe:before {
+    content: "\f116";
+}
+.flaticon-rate:before {
+    content: "\f117";
+}
+.flaticon-visibility:before {
+    content: "\f118";
+}
+
