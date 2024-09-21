@@ -14,7 +14,7 @@ class LoginController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create()
     {
         return view('admin.auth.login');
     }
@@ -24,8 +24,8 @@ class LoginController extends Controller
      */
     public function store(AdminLoginRequest $request): RedirectResponse
     {
+       
         $request->authenticate();
-
         $request->session()->regenerate();
 
         return redirect()->intended(route('admin.dashboard', absolute: false));
