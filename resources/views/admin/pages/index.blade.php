@@ -7,7 +7,6 @@
             <h4 class="card-title">Page</h4>
             <p class="card-description"> 
                 <a href="{{ route('pages.create') }}" class="btn btn-primary">Add Page</a>
-                
             </p>
             @if (session('success'))
                 <div class="alert alert-success">
@@ -42,7 +41,7 @@
                     @endif
                     </td>
                     <td>
-                         <!-- Add your action buttons here -->
+                      <a href="{{ url($page->slug) }}" target="_blank" class="btn btn-primary btn-sm">View</a>
                     <a href="{{ route('pages.edit', $page->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('pages.destroy', $page->id) }}" method="POST" style="display:inline;">
                         @csrf
@@ -50,7 +49,6 @@
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                     </form>
                     </td>
-
                   </tr>
                  @endforeach
                 </tbody>

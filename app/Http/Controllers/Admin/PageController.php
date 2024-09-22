@@ -1,6 +1,6 @@
 <?php
 
-namespace  App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePageRequest;
@@ -93,5 +93,7 @@ class PageController extends Controller
         $page->delete();
         return redirect()->route('pages.index')->with('success', 'Page deleted successfully!');
     }
+
+    
 }
 

@@ -1,7 +1,7 @@
 <header class="bg-light header" id="myHeader">
   <nav class="navbar navbar-expand-lg bg-light py-0">
   <div class="container">
-    <a class="navbar-brand" href="#"><img src="assets/images/logo.png" width="220px" alt="logo"></a>
+    <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/logo.png')}}" width="220px" alt="logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

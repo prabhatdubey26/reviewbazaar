@@ -1,56 +1,81 @@
-<footer class="pt-5 bg-dark">
+<footer class="pt-md-6">
   <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <img src="assets/images/W-services-footer.png" width="220px" alt="W services footer">
-        <div class="th-widget-contact d-flex pt-4">
-          <div class="text-white">
-              <h5 class="footer-info-title">Telefonska številka</h5>
-              <p class="footer-info"><img src="assets/images/icons/telephone.png" alt="telephone" width="15px" height="15px"> <a class="text-inherit text-light text-decoration-none" href="tel:+36869803622"> +368 69 803 622</a></p>
-          </div>
-          <div class="text-white ps-3">
-              <h5 class="footer-info-title">Elektronski naslov</h5>
-              <p class="footer-info"><img src="assets/images/icons/envelope.png" alt="envelope" width="15px" height="15px"> <a class="text-inherit text-light text-decoration-none" href="mailto:info.williamscompany@gmail.com"> info.williamscompany@gmail.com</a></p>
-          </div>
+      <div class="row pb-4">
+        <div class="col-md-3">
+          <img src="{{ asset('assets/images/logo.png')}}" width="180px" alt="">
+          <p class="pt-3">Donec sollicitudin metus eu dictum consectetur. Morbi tempor nulla sit amet bibendum maxi mus. Vestibulum at enim at sapiend.</p>
         </div>
-          <div class="text-white">
-              <h5 class="footer-info-title">Naslov Lokacija</h5>
-              <p class="footer-info"><img src="assets/images/icons/pin.png" alt="envelope" width="15px" height="15px"> <a class="text-inherit text-light text-decoration-none" href="#"> Stihova Ulica 13, Ljubljana, Slovenia</a></p>
-          </div>
-      </div>
-      <div class="col-md">
-        <div class="text-white">
-           <h4 class="mb-0 pt-3 pb-3 ps-4 ms-1">Hitre Povezave</h4>
-           <ul class="pt-3 Links">
-             <li><a href="gradbenistvo-delovna-sila.php">Gradbeništvo Delovna sila</a></li>
-              <li><a  href="avtomobil.php">Avtomobil</a></li>
-              <li><a  href="vzdrzevanje-in-gospodinjstvo.php">vzdrževanje in gospodinjstvo</a></li>
-              <li><a  href="upravljanje-objektov.php">Upravljanje objektov</a></li>
-              <li><a  href="ciscenje-in-vzdrzevanje-na-prostem.php">Čiščenje in vzdrževanje na prostem</a></li>
-              <li><a  href="gostinstvo-in-hotelirstvo.php">Gostinstvo in hotelirstvo</a></li>
-              <li><a  href="vozniki-in-logistika.php">Vozniki in logistika</a></li>
-              <li><a  href="skladisca-in-tovarne.php">Skladišča in tovarne</a></li>
-              <li><a  href="produkcije.php">Produkcije</a></li>
-           </ul>
-        </div>
-      </div>
-      <!-- <div class="col-md-3">
-         <h4 class="mb-0 pt-3 pb-3 ps-4 ms-1 text-white">Izjava o omejitvi odgovornosti</h4>
-          <ul class="legal pt-3">
-            <li><a href="#">Pravilnik o zasebnosti</a></li>
-            <li><a href="#">Pogoji in določila</a></li>
+        <div class="col-md">
+          <h5 class="pb-3">Community</h5>
+          <ul>
+            <li><a href="#">Bank </a></li>
+            <li><a href="#">Travel Insurance Company </a></li>
+            <li><a href="#">Car Dealer </a></li>
+            <li><a href="#">Furniture Store </a></li>
+            <li><a href="#">Jewelry Store </a></li>
+            <li><a href="#">Clothing Store </a></li>
+            <li><a href="#">Electronics & Technolog </a></li>
           </ul>
-      </div> -->
-    </div>
+        </div>
+        <div class="col-md">
+        <h5 class="pb-3">Businesses</h5>
+          <ul>
+            <li><a href="#">Bank </a></li>
+            <li><a href="#">Travel Insurance Company </a></li>
+            <li><a href="#">Car Dealer </a></li>
+            <li><a href="#">Furniture Store </a></li>
+            <li><a href="#">Jewelry Store </a></li>
+            <li><a href="#">Clothing Store </a></li>
+            <li><a href="#">Electronics & Technolog </a></li>
+          </ul>
+        </div>
+        <div class="col-md">
+        <h5 class="pb-3">About us</h5>
+          <ul>
+            <li><a href="#">Bank </a></li>
+            <li><a href="#">Travel Insurance Company </a></li>
+            <li><a href="#">Car Dealer </a></li>
+            <li><a href="#">Furniture Store </a></li>
+            <li><a href="#">Jewelry Store </a></li>
+            <li><a href="#">Clothing Store </a></li>
+            <li><a href="#">Electronics & Technolog </a></li>
+          </ul>
+        </div>
+        <div class="col-md">
+        <h5 class="pb-3">Follow us on</h5>
+          <ul class="follow-us">
+            <li><a href="#"><i class="flaticon-facebook"></i></a></li>
+            <li><a href="#"><i class="flaticon-twitter"></i></a></li>
+            <li><a href="#"><i class="flaticon-photo"></i></a></li>
+            <li><a href="#"><i class="flaticon-logo"></i></a></li>
+            <li><a href="#"><i class="flaticon-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
   </div>
-  <div class="bg-secondary py-3">
+  <div class="border-top pt-4 legal">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-           <p class="copyright-text mb-0 text-white small">Copyright <i class="fal fa-copyright"></i> 2024 <a href="#">W Servicess</a>. All Rights Reserved.</p>
+        <div class="col-md-12">
+            <ul>
+             <li><a href="#">Legal </a></li>
+             <li><a href="#">Privacy Policy </a></li>
+             <li><a href="#">Terms & Conditions </a></li>
+             <li><a href="#">Guidelines for Reviewers </a></li>
+             <li><a href="#">System status </a></li>
+             <li><a href="#">Modern Slavery Statement </a></li>
+            </ul>
         </div>
-        <div class="col-md-6 text-end">
-           <p class="copyright-text mb-0 text-white small">Powered By <a href="#">W Servicess</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="border-top pt-4 legal">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <ul>
+               <li><a href="#">© 2024 Review Bazzar. All rights reserved. </a></li>
+            </ul>
         </div>
       </div>
     </div>
