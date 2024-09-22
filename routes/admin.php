@@ -16,7 +16,7 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
     })->name('admin.dashboard');
 
     Route::resource('pages', PageController::class);
-    Route::resource('category', CategoryController::class);
+    Route::resource('categories', CategoryController::class);
     Route::get('logout', [LoginController::class, 'destroy'])->name('admin.logout');
 
 });

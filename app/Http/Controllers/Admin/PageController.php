@@ -64,7 +64,7 @@ class PageController extends Controller
         $page->slug = $request->title;
         if ($request->hasFile('image')) {
             if ($page->image) {
-                $oldImagePath = public_path($page->image);
+                $oldImagePath = public_path('images/pages/'.$page->image);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath); // Remove the old image
                 }
@@ -72,7 +72,7 @@ class PageController extends Controller
 
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $destinationPath = public_path('images');
+            $destinationPath = public_path('images/pages');
             $image->move($destinationPath, $imageName);
             $page->image =  $imageName;
         }
