@@ -22,7 +22,7 @@
                         <select class="form-select @error('category') is-invalid @enderror" id="category" name="category">
                             <option selected disabled>Select category</option>
                             @foreach($categories as $category)
-                                <option value="active" {{ old('category', $category) == 'active' ? 'selected' : '' }}>{{ $category->name }}</option>
+                                <option value="{{$category->id}}" {{ old('category', $category) == 'active' ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                         @error('category')
