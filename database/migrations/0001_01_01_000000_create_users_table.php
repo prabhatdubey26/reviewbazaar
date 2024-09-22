@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('social_id')->nullable();    // add social_id column with varchar type
+            $table->string('social_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

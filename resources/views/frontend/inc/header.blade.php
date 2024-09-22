@@ -95,7 +95,17 @@
         </li>
       </ul>
       <div class="d-flex ps-5">
+        @if(Auth::user())
+        <a href="#" class="mx-1" ><img src="assets/images/icons/user.png" width="20px"></a>
+        <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
+        <a href="{{ url('logout') }}" class="mx-1" >
+          Logout
+        </a>
+        @else
         <a href="#"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="assets/images/icons/user.png" width="20px"></a>
+
+        @endif
+       
      </div>
     </div>
   </div>

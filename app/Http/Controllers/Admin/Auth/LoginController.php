@@ -16,6 +16,9 @@ class LoginController extends Controller
      */
     public function create()
     {
+        if (Auth::guard('admin')->check()) {
+            return redirect()->route('admin.dashboard'); // Redirect to dashboard if logged in
+        }
         return view('admin.auth.login');
     }
 

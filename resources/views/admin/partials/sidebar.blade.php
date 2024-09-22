@@ -15,9 +15,9 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{ route('pages.index') }}">Pages</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{ route('categories.index') }}">Category</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Typography</a></li>
+          <li class="nav-item"> <a class="nav-link {{ request()->is('admin/pages*') ? 'active' : '' }}" href="{{ route('pages.index') }}">Pages</a></li>
+          <li class="nav-item"> <a class="nav-link {{ request()->is('admin/categories*') ? 'active' : '' }}" href="{{ route('categories.index') }}">Category</a></li>
+          <li class="nav-item"> <a class="nav-link {{ request()->is('admin/company*') ? 'active' : '' }}" href="{{ route('company.index') }}">Company</a></li>
         </ul>
       </div>
     </li>

@@ -9,14 +9,14 @@
         <h5>Log in or sign up below</h5>
       </div>
       <div class="login text-center">
-          <a href="#" class="btn btn-white bg-white d-flex align-items-center justify-content-between">
-          <span class="btn-label"><img src="assets/images/icons/google.png" width="25px" alt=""></span>
+          <a href="{{ route('google.redirect') }}" class="btn btn-white bg-white d-flex align-items-center justify-content-between">
+          <span class="btn-label"><img src="{{ asset('assets/images/icons/google.png')}}" width="25px" alt=""></span>
           <span>Continue with Google</span>
         </a>
       </div>
       <div class="login text-center mt-3">
           <a href="#" class="btn btn-primary text-white rounded-pill d-flex align-items-center justify-content-between ">
-          <span class="btn-label"><img src="assets/images/icons/facebook.png" width="25px" alt=""></span>
+          <span class="btn-label"><img src="{{ asset('assets/images/icons/facebook.png')}}" width="25px" alt=""></span>
           <span>Continue with facebook</span>
         </a>
       </div>
