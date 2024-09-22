@@ -7,4 +7,4 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 require __DIR__.'/admin.php';
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/admin/login', [LoginController::class, 'create'])->name('login');
+Route::get('/admin', [LoginController::class, 'create'])->name('login');

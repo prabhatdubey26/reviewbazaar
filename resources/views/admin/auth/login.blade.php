@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ReviewBazaar Admin | Login </title>
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset("admin/assets/css/style.css")}}" >
+    <link rel="stylesheet" href="{{ asset("backend/assets/css/style.css")}}" >
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset("assets/images/logo.png") }}" />
   </head>
