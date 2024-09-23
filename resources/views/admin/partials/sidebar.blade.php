@@ -24,7 +24,7 @@
     <li class="nav-item">
       <a class="nav-link" href="#">
         <i class="menu-icon mdi mdi-file-document"></i>
-        <span class="menu-title">Reports</span>
+        <span class="menu-title">Reviews</span>
       </a>
     </li>
   </ul>

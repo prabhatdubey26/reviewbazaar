@@ -31,7 +31,9 @@
                     <td> {{ $company->website_url }} </td>
 
                     <td class="py-1">
-                      <img src="{{ asset('images/company') }}/{{$company->image}}" alt="image">
+                      @if($company->logo)
+                      <img src="{{ asset('logos') }}/{{$company->logo}}" alt="logo">
+                      @endif
                     </td>
                     <td>
                         @if($company->status === 'active')
@@ -41,7 +43,6 @@
                     @endif
                     </td>
                     <td>
-                      <a href="{{ url($company->slug) }}" target="_blank" class="btn btn-primary btn-sm">View</a>
                     <a href="{{ route('company.edit', $company->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('company.destroy', $company->id) }}" method="POST" style="display:inline;">
                         @csrf

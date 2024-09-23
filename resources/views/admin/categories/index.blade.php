@@ -20,7 +20,7 @@
                     <th> Name </th>
                     <th> Parent Category</th>
                     <th> Slug </th>
-                    <th> Image </th>
+                    <th> Logo </th>
                     <th> Status </th>
                     <th> Action </th>
                   </tr>

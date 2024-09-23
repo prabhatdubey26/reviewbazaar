@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
-    use HasFactory;
-    
+    use HasFactory, SoftDeletes;
+
     protected $fillable = [
         'name',
         'logo',
@@ -24,4 +25,10 @@ class Company extends Model
         'category',
         'status',
     ];
+    // In Company.php
+public function categories()
+{
+    return $this->belongsToMany(Category::class);
+}
+
 }
