@@ -7,7 +7,7 @@
             <div class="col-md-7">
                 <div class="row login-page align-items-center d-flex justify-content-between g-0 bg-light">
                     <div class="col-md-6">
-                        <img class="img-fluid" src="assets/images/login.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('assets/images/signup.jpg')}}" alt="">
                     </div>
                     <div class="p-5 rounded-3 col-md-6 h-100">
                         <form method="POST" action="{{ route('login') }}">

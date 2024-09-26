@@ -9,6 +9,11 @@
                     <div class="col-md-5">
                         <img class="img-fluid" src="{{ asset('assets/images/signup.jpg')}}" alt="">
                     </div>
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                     <div class="p-5 rounded-3 col-md-7 h-100">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf  
