@@ -27,104 +27,34 @@
 </section>
 <section class="py-4 category-wrappers">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-      <div id="owl-carousel" class="owl-carousel owl-theme">
-        <div class="item">
-           <a href="list-page.php">
-            <div class="category">
-              <div class="icons-list">
-                  <i class="flaticon-bank"></i>
+      <div class="row">
+          <div class="col-md-12">
+              <div id="owl-carousel" class="owl-carousel owl-theme">
+                  @foreach($categories as $category)
+                      <div class="item">
+                          <a href="{{ url('categories', $category->slug) }}"> <!-- Update with your route -->
+                              <div class="category">
+                                  <div class="icons-list">
+                                    @if($category->image && file_exists(public_path('images/category/' . $category->image)))
+                                        <img src="{{ asset('images/category/' . $category->image) }}" height="50px"  alt="">
+                                  
+                                        @else
+                                    <i class="flaticon-bank"></i>
+                                          {{-- <img src="{{ asset('assets/images/company/1.png') }}" width="70px" alt=""> --}}
+                                    @endif
+                                      <!-- You can use a dynamic icon here if needed -->
+                                  </div>
+                                  <h5 class="mb-0">{{ $category->name }}</h5> <!-- Display the category name -->
+                              </div>
+                          </a>
+                      </div>
+                  @endforeach
               </div>
-              <h5 class="mb-0"> Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-         <a href="list-page.php">
-            <div class="category">
-               <div class="icons-list">
-                 <i class="flaticon-graduating-student"></i>
-              </div>
-              <h5 class="mb-0">Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="list-page.php">
-            <div class="category">
-              <div class="icons-list">
-                  <i class="flaticon-bank"></i>
-              </div>
-              <h5 class="mb-0">Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="list-page.php">
-            <div class="category">
-              <div class="icons-list">
-                  <i class="flaticon-bank"></i>
-              </div>
-              <h5 class="mb-0">Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="list-page.php">
-            <div class="category">
-              <div class="icons-list">
-                  <i class="flaticon-bank"></i>
-              </div>
-              <h5 class="mb-0">Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <div class="category">
-              <div class="icons-list">
-                  <i class="flaticon-bank"></i>
-              </div>
-              <h5 class="mb-0">Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <div class="category">
-               <div class="icons-list">
-                  <i class="flaticon-bank"></i>
-              </div>
-              <h5 class="mb-0">Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <div class="category">
-              <div class="icons-list">
-                  <i class="flaticon-bank"></i>
-              </div>
-              <h5 class="mb-0">Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#">
-            <div class="category">
-               <div class="icons-list">
-                  <i class="flaticon-bank"></i>
-               </div>
-              <h5 class="mb-0">Travel Insurance Company</h5>
-            </div>
-          </a>
-        </div>
+          </div>
       </div>
-      </div>
-    </div>
   </div>
 </section>
+
 
 <section class="copmany-wrapper py-6">
   <div class="container">
@@ -138,17 +68,22 @@
            </div>
        </div>
     <div class="row g-4 pt-5">
+      @foreach($companies as $company)
       <div class="col-xl-3 col-md-6">
           <a href="#" class="text-decoration-none">
             <div class="list-box">
                  <div class="list-company"> 
-                      <img src="{{ asset('assets/images/company/1.png')}}" width="70px" alt="">
+                      @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
+                          <img src="{{ asset('logos/' . $company->logo) }}" width="70px" alt="">
+                      @else
+                          <img src="{{ asset('assets/images/company/1.png') }}" width="70px" alt="">
+                      @endif
                       <div>
-                        <span class="ps-3 text-dark">Spinfluence</span>
-                        <span class="ps-3 small text-primary">www.mexipass.com</span>
+                        <span class="ps-3 text-dark">{{ $company->name }}</span>
+                        <span class="ps-3 small text-primary">{{ $company->website_url }}</span>
                       </div>
                   </div>
-                  <p class="text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  <p class="text-primary">{{ $company->about }}</p>
                   <div id="full-stars-example-two">
                       <div class="rating-group">
                     <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
@@ -167,209 +102,7 @@
             </div>
           </a>
       </div>
-      <div class="col-xl-3 col-md-6">
-          <a href="#" class="text-decoration-none">
-            <div class="list-box">
-                 <div class="list-company"> 
-                      <img src="{{ asset('assets/images/company/1.png')}}" width="70px" alt="">
-                      <div>
-                        <span class="ps-3 text-dark">Spinfluence</span>
-                        <span class="ps-3 small text-primary">www.mexipass.com</span>
-                      </div>
-                  </div>
-                  <p class="text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  <div id="full-stars-example-two">
-                <div class="rating-group">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                   </div>
-                </div>
-            </div>
-          </a>
-      </div>
-      <div class="col-xl-3 col-md-6">
-          <a href="#" class="text-decoration-none">
-            <div class="list-box">
-                 <div class="list-company"> 
-                      <img src="{{ asset('assets/images/company/1.png')}}" width="70px" alt="">
-                      <div>
-                        <span class="ps-3 text-dark">Spinfluence</span>
-                        <span class="ps-3 small text-primary">www.mexipass.com</span>
-                      </div>
-                  </div>
-                  <p class="text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  <div id="full-stars-example-two">
-                <div class="rating-group">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                   </div>
-                </div>
-            </div>
-          </a>
-      </div>
-      <div class="col-xl-3 col-md-6">
-          <a href="#" class="text-decoration-none">
-            <div class="list-box">
-                 <div class="list-company"> 
-                      <img src="{{ asset('assets/images/company/1.png')}}" width="70px" alt="">
-                      <div>
-                        <span class="ps-3 text-dark">Spinfluence</span>
-                        <span class="ps-3 small text-primary">www.mexipass.com</span>
-                      </div>
-                  </div>
-                  <p class="text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  <div id="full-stars-example-two">
-                <div class="rating-group">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                   </div>
-                </div>
-            </div>
-          </a>
-      </div>
-      <!-- <div class="col-md-3">
-          <a href="#" class="text-decoration-none">
-            <div class="list-box">
-                 <div class="list-company"> 
-                      <img src="{{ asset('assets/images/company/1.png')}}" width="70px" alt="">
-                      <div>
-                        <span class="ps-3 text-dark">Spinfluence</span>
-                        <span class="ps-3 small text-primary">www.mexipass.com</span>
-                      </div>
-                  </div>
-                  <p class="text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  <div id="full-stars-example-two">
-                <div class="rating-group">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                   </div>
-                </div>
-            </div>
-          </a>
-      </div>
-      <div class="col-md-3">
-          <a href="#" class="text-decoration-none">
-            <div class="list-box">
-                 <div class="list-company"> 
-                      <img src="{{ asset('assets/images/company/1.png')}}" width="70px" alt="">
-                      <div>
-                        <span class="ps-3 text-dark">Spinfluence</span>
-                        <span class="ps-3 small text-primary">www.mexipass.com</span>
-                      </div>
-                  </div>
-                  <p class="text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  <div id="full-stars-example-two">
-                <div class="rating-group">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                   </div>
-                </div>
-            </div>
-          </a>
-      </div>
-      <div class="col-md-3">
-          <a href="#" class="text-decoration-none">
-            <div class="list-box">
-                 <div class="list-company"> 
-                      <img src="{{ asset('assets/images/company/1.png')}}" width="70px" alt="">
-                      <div>
-                        <span class="ps-3 text-dark">Spinfluence</span>
-                        <span class="ps-3 small text-primary">www.mexipass.com</span>
-                      </div>
-                  </div>
-                  <p class="text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  <div id="full-stars-example-two">
-                <div class="rating-group">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                   </div>
-                </div>
-            </div>
-          </a>
-      </div>
-      <div class="col-md-3">
-          <a href="#" class="text-decoration-none">
-            <div class="list-box">
-                 <div class="list-company"> 
-                      <img src="{{ asset('assets/images/company/1.png')}}" width="70px" alt="">
-                      <div>
-                        <span class="ps-3 text-dark">Spinfluence</span>
-                        <span class="ps-3 small text-primary">www.mexipass.com</span>
-                      </div>
-                  </div>
-                  <p class="text-primary">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  <div id="full-stars-example-two">
-                <div class="rating-group">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star icon-star-full"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                   </div>
-                </div>
-            </div>
-          </a>
-      </div> -->
+     @endforeach
     </div>
   </div>
 </section>

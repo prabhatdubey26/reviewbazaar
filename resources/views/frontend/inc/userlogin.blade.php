@@ -21,14 +21,14 @@
         </a>
       </div>
       <div class="py-4 text-center">
-         <a class="fw-semibold" href="#">Continue with email</a>
+         <a class="fw-semibold" href="{{ url('login') }}">Continue with email</a>
       </div>
     </div>
       <div class="py-4 text-center p-5">
         <h3>Are you a business?</h3>
         <p>Set up your business account on Trustpilot for free</p>
-        <a class="btn btn-primary" href="#">Log in</a>
-        <a class="btn btn-light" href="#">Sign up</a>
+        <a class="btn btn-primary" href="{{ url('login') }}">Log in</a>
+        <a class="btn btn-light" href="{{ url('signup') }}">Sign up</a>
       </div>
   </div>
 </div>

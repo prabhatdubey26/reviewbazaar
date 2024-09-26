@@ -26,9 +26,9 @@ class Company extends Model
         'status',
     ];
     // In Company.php
-public function categories()
-{
-    return $this->belongsToMany(Category::class);
-}
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category', 'id');
+    }
 
 }

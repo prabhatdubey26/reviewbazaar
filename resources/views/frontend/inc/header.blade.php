@@ -20,67 +20,17 @@
           </a>
           <div class="dropdown-menu px-3 rounded-0">
             <div class="row">
+              @foreach($categories->chunk(4) as $chunk) <!-- Display in 4 columns -->
               <div class="col-sm-3">
-                    <div class="text ps-3">
+                  <div class="text ps-3">
                       <ul>
-                        <li><a href="#"> Bank</a></li>
-                        <li><a href="#">Travel Insurance Company</a></li>
-                        <li><a href="#">Car Dealer</a></li>
-                        <li><a href="#">Furniture Store</a></li>
-                        <li><a href="#">Jewelry Store</a></li>
-                        <li><a href="#">Clothing Store</a></li>
-                        <li><a href="#">Electronics & Technology</a></li>
-                        <li><a href="#">Fitness and Nutrition Service</a></li>
-                       
+                          @foreach($chunk as $category)
+                              <li><a href="{{ url('categories', $category->slug) }}">{{ $category->name }}</a></li> <!-- Assuming the category has a 'name' attribute -->
+                          @endforeach
                       </ul>
-                    </div>
+                  </div>
               </div>
-              <div class="col-sm-3">
-                    <div class="text ps-3">
-                      <ul>
-                        <li><a href="#"> Bank</a></li>
-                        <li><a href="#">Travel Insurance Company</a></li>
-                        <li><a href="#">Car Dealer</a></li>
-                        <li><a href="#">Furniture Store</a></li>
-                        <li><a href="#">Jewelry Store</a></li>
-                        <li><a href="#">Clothing Store</a></li>
-                        <li><a href="#">Electronics & Technology</a></li>
-                        <li><a href="#">Fitness and Nutrition Service</a></li>
-                       
-                      </ul>
-                    </div>
-              </div>
-              <div class="col-sm-3">
-                    <div class="text ps-3">
-                      <ul>
-                        <li><a href="#"> Bank</a></li>
-                        <li><a href="#">Travel Insurance Company</a></li>
-                        <li><a href="#">Car Dealer</a></li>
-                        <li><a href="#">Furniture Store</a></li>
-                        <li><a href="#">Jewelry Store</a></li>
-                        <li><a href="#">Clothing Store</a></li>
-                        <li><a href="#">Electronics & Technology</a></li>
-                        <li><a href="#">Fitness and Nutrition Service</a></li>
-                        
-                      </ul>
-                    </div>
-              </div>
-              <div class="col-sm-3">
-                    <div class="text ps-3">
-                      <ul>
-                        <li><a href="#"> Bank</a></li>
-                        <li><a href="#">Travel Insurance Company</a></li>
-                        <li><a href="#">Car Dealer</a></li>
-                        <li><a href="#">Furniture Store</a></li>
-                        <li><a href="#">Jewelry Store</a></li>
-                        <li><a href="#">Clothing Store</a></li>
-                        <li><a href="#">Electronics & Technology</a></li>
-                        <li><a href="#">Fitness and Nutrition Service</a></li>
-                        
-                      </ul>
-                    </div>
-              </div>
-              
+          @endforeach
             </div>
           </div>
         </li>

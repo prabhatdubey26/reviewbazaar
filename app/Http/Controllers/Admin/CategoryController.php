@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
+use App\Models\Company;
+
 
 class CategoryController extends Controller
 {
@@ -18,6 +20,20 @@ class CategoryController extends Controller
     {
       $categories = Category::where(['is_parent'=>0])->get();
        return view('admin.categories.create', compact('categories'));
+    }
+
+    public function show($slug)
+    {
+       $category = Category::where(['slug'=>$slug])->with('companies')->first();
+       if($category){
+            $companies = Company::whereRaw("FIND_IN_SET(?, category)", [$category->id])->paginate(20);
+            $realtedCategories = Category::where(['is_parent'=>$category->is_parent])->where('id', '!=', $category->id)->get();
+            return view('frontend.category.details', compact('category', 'companies','realtedCategories'));
+       }
+       else{
+        abort(404);
+       }
+       
     }
 
     public function store(StoreCategoryRequest $request)
