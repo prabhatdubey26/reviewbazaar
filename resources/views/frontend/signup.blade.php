@@ -5,15 +5,16 @@
     <div class="container">
         <div class="justify-content-center align-items-center d-flex">
             <div class="col-md-7">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                 <div class="row login-page align-items-center d-flex justify-content-between g-0 bg-light">
                     <div class="col-md-5">
                         <img class="img-fluid" src="{{ asset('assets/images/signup.jpg')}}" alt="">
                     </div>
-                    @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                    
                     <div class="p-5 rounded-3 col-md-7 h-100">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf  
