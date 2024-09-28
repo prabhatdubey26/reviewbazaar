@@ -30,7 +30,7 @@
               <div class="d-lg-flex mb-3 border-bottom rounded-3 pb-4">
                   <div class="list-style1">
                     @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
-                    <img class="img-fluid" src="{{ asset('logos/', $company->logo)}}" alt="{{ $company->website_url }}">
+                    <img class="img-fluid" src="{{ asset('logos/' . $company->logo) }}" alt="{{ $company->website_url }}">
                     @else
                     <img class="img-fluid" src="{{ asset('assets/images/company/1.png')}}" alt="{{ $company->website_url }}">
                     @endif
