@@ -14,16 +14,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-       $blogs = Blog::latest()->take(4)->get();
-       $companies = Company::latest()->get();
+       $blogs = Blog::latest()->where(['status'=> 'active'])->take(4)->get();
+       $companies = Company::where(['status'=> 'active'])->latest()->get();
        return view('frontend.index', compact('companies','blogs'));
     }
 
     public function blog()
     {   
-       $blogs = Blog::latest()->take(6)->get();
-       $categories = Category::latest()->take(6)->get();
-       $recentBlogs = Blog::latest()->take(3)->get();
+       $blogs = Blog::latest()->where(['status'=> 'active'])->take(6)->get();
+       $categories = Category::latest()->where(['status'=> 'active'])->take(6)->get();
+       $recentBlogs = Blog::latest()->where(['status'=> 'active'])->take(3)->get();
        return view('frontend.blog.index', compact('blogs','categories','recentBlogs'));
     }
 

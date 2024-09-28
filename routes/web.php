@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CompanyController;
+
 
 
 
@@ -19,6 +21,8 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog-details');
 Route::get('/categories/{slug}', [CategoryController::class, 'show']);
+Route::get('/company/{website_url}', [CompanyController::class, 'show']);
+
 
 
 Route::get('/google/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');

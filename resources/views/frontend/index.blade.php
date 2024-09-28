@@ -55,7 +55,6 @@
   </div>
 </section>
 
-
 <section class="copmany-wrapper py-6">
   <div class="container">
       <div class="d-flex align-items-center justify-content-between">
@@ -70,7 +69,7 @@
     <div class="row g-4 pt-5">
       @foreach($companies as $company)
       <div class="col-xl-3 col-md-6">
-          <a href="#" class="text-decoration-none">
+          <a href="{{ url('company', $company->website_url) }}" class="text-decoration-none">
             <div class="list-box">
                  <div class="list-company"> 
                       @if($company->logo && file_exists(public_path('logos/' . $company->logo)))

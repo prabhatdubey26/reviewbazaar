@@ -31,7 +31,7 @@
                     <td> {{ $company->website_url }} </td>
 
                     <td class="py-1">
-                      @if($company->logo)
+                      @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
                       <img src="{{ asset('logos') }}/{{$company->logo}}" alt="logo">
                       @endif
                     </td>

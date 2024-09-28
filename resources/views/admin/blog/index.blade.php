@@ -43,7 +43,7 @@
                     @endif
                     </td>
                     <td>
-                      <a href="{{ url($blog->slug) }}" target="_blank" class="btn btn-primary btn-sm">View</a>
+                      <a href="{{ url('blog/'.$blog->slug) }}" target="_blank" class="btn btn-primary btn-sm">View</a>
                     <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('blog.destroy', $blog->id) }}" method="POST" style="display:inline;">
                         @csrf

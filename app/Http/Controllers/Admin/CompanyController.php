@@ -27,7 +27,6 @@ class CompanyController extends Controller
     {
         $company = new Company($request->validated());
 
-        // Handle the logo upload
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $logoName = time() . '.' . $logo->getClientOriginalExtension();
@@ -51,45 +50,51 @@ class CompanyController extends Controller
         return view('admin.company.edit', compact('company', 'categories'));
     }
 
-    public function update(StoreCompanyRequest $request, Company $company)
-{
-    // Update company properties with validated request data
-    $company->fill($request->validated());
+    public function show($url)
+    {
+       $company = Company::where(['website_url'=>$url])->first();
+       if($company){
+            return view('frontend.company.index', compact('company'));
+       }
+       else{
+        abort(404);
+       }
+       
+    }
 
-    // Handle the logo upload
-    if ($request->hasFile('logo')) {
-        // Optionally delete the old logo if you want to manage storage
-        if ($company->logo) {
-            $oldLogoPath = public_path('logos/' . $company->logo);
-            if (file_exists($oldLogoPath)) {
-                unlink($oldLogoPath);
+    public function update(StoreCompanyRequest $request, Company $company)
+    {
+        $company->fill($request->validated());
+
+        if ($request->hasFile('logo')) {
+            if ($company->logo) {
+                $oldLogoPath = public_path('logos/' . $company->logo);
+                if (file_exists($oldLogoPath)) {
+                    unlink($oldLogoPath);
+                }
             }
+
+            $logo = $request->file('logo');
+            $logoName = time() . '.' . $logo->getClientOriginalExtension();
+            $destinationPath = public_path('logos'); 
+            $logo->move($destinationPath, $logoName); 
+            $company->logo = $logoName;
         }
 
-        $logo = $request->file('logo');
-        $logoName = time() . '.' . $logo->getClientOriginalExtension();
-        $destinationPath = public_path('logos'); 
-        $logo->move($destinationPath, $logoName); 
-        $company->logo = $logoName;
+        if ($request->has('categories')) {
+            $company->category = implode(',', $request->categories);
+        }
+
+        $company->save();
+        return redirect()->route('company.index')->with('success', 'Company updated successfully.');
     }
 
-    // Update categories
-    if ($request->has('categories')) {
-        $company->category = implode(',', $request->categories);
-    }
-
-    $company->save();
-    return redirect()->route('company.index')->with('success', 'Company updated successfully.');
-}
-
-
-     // Destroy method
      public function destroy(Company $company)
      {
          if ($company->logo) {
              $oldImagePath = public_path('logos/'.$company->logo);
              if (file_exists($oldImagePath)) {
-                 unlink($oldImagePath); // Remove the logo
+                 unlink($oldImagePath); 
              }
          }
          $company->delete();

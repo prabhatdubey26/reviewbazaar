@@ -22,8 +22,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (app()->resolved('db')) {
-            $categories = Category::latest()->get();
-            // dd($categories);
+            $categories = Category::latest()->where(['status'=> 'active'])->get();
             View::share('categories', $categories);
         }
     }

@@ -52,7 +52,7 @@ class CategoryController extends Controller
             $category->image = $imageName; 
         }
     
-        $category->is_parent = $request->category ?? '0';
+        // $category->is_parent = $request->category ?? 0;
         $category->status = $request->status ?? 'active';
         $category->save();
     
@@ -71,18 +71,16 @@ class CategoryController extends Controller
     {
         $category->name = $request->name;
         $category->status = $request->status;
-        $category->slug = $request->name; // Ensure to use a proper slug function
-        $category->is_parent = $request->category ?? '0';
+        $category->slug = $request->name; 
+        // $category->is_parent = $request->category ?? 0;
         
         if ($request->hasFile('image')) {
-            // Remove old image if it exists
             if ($category->image) {
                 $oldImagePath = public_path('images/category/' . $category->image);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath);
                 }
             }
-
             // Store new image
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
