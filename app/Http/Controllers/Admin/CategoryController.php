@@ -29,13 +29,13 @@ class CategoryController extends Controller
     $category = Category::where('slug', $slug)->with('companies')->first();
 
     if ($category) {
-        $companies = Company::whereRaw("FIND_IN_SET(?, category)", [$category->id]);
+        $companies = Company::whereRaw("FIND_IN_SET(?, category)", [$category->id])->where(['status'=>'active']);
 
         if ($request->query('search')) {
             $companies->where('name', 'like', '%' . $request->query('search') . '%');
         }
         $companies = $companies->paginate(20);
-        
+
         $relatedCategories = Category::where('is_parent', $category->is_parent)
             ->where('id', '!=', $category->id)
             ->get();
