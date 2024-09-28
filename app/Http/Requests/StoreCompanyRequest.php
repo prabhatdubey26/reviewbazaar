@@ -8,7 +8,7 @@ class StoreCompanyRequest extends FormRequest
 {
     public function authorize()
     {
-        return true; // Allow all users to make this request
+        return true; 
     }
 
     public function rules()
@@ -18,7 +18,7 @@ class StoreCompanyRequest extends FormRequest
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Logo validation
             'about' => 'nullable|string',
             'verified' => 'boolean',
-            'website_url' => 'nullable|url',
+            'website_url' => 'nullable',
             'email' => 'nullable|email',
             'phone' => 'nullable|string',
             'address' => 'nullable|string',

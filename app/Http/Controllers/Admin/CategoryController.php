@@ -24,19 +24,28 @@ class CategoryController extends Controller
        return view('admin.categories.create', compact('categories'));
     }
 
-    public function show($slug)
-    {
-       $category = Category::where(['slug'=>$slug])->with('companies')->first();
-       if($category){
-            $companies = Company::whereRaw("FIND_IN_SET(?, category)", [$category->id])->paginate(20);
-            $realtedCategories = Category::where(['is_parent'=>$category->is_parent])->where('id', '!=', $category->id)->get();
-            return view('frontend.category.details', compact('category', 'companies','realtedCategories'));
-       }
-       else{
+    public function show(Request $request, $slug)
+{
+    $category = Category::where('slug', $slug)->with('companies')->first();
+
+    if ($category) {
+        $companies = Company::whereRaw("FIND_IN_SET(?, category)", [$category->id]);
+
+        if ($request->query('search')) {
+            $companies->where('name', 'like', '%' . $request->query('search') . '%');
+        }
+        $companies = $companies->paginate(20);
+        
+        $relatedCategories = Category::where('is_parent', $category->is_parent)
+            ->where('id', '!=', $category->id)
+            ->get();
+
+        return view('frontend.category.details', compact('category', 'companies', 'relatedCategories'));
+    } else {
         abort(404);
-       }
-       
     }
+}
+
 
     public function store(StoreCategoryRequest $request)
     {

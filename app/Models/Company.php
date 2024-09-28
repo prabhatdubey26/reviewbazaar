@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Category; // Ensure this import is present
 
 class Company extends Model
 {
@@ -25,10 +26,21 @@ class Company extends Model
         'category',
         'status',
     ];
-    // In Company.php
-    public function categories()
+
+
+    public function getCategoryNamesAttribute()
     {
-        return $this->belongsToMany(Category::class, 'category', 'id');
+        return $this->getCategoryValue($this->category);
+    }
+
+    protected function getCategoryValue($value)
+    {
+        if (empty($value)) {
+            return [];
+        }
+        
+        $categoryIds = explode(',', $value);
+        return Category::whereIn('id', $categoryIds)->pluck('name')->toArray(); 
     }
 
 }

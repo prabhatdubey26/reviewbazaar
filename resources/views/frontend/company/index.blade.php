@@ -153,7 +153,11 @@
                 
             </div>
              <div class="pt-3">
-             <h6>Insurance - Compare & Save, Quickly</h6>
+             <h6>
+                @foreach($company->category_names as $category)
+                <a href="#" class="btn btn-light btn-sm rounded-pill me-2">{{ $category }}</a>
+            @endforeach
+             </h6>
              <p>{{ $company->about }} </p>
              </div>
           </div>

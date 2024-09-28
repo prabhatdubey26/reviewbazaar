@@ -45,7 +45,7 @@
           <div class="bg-white p-4 rounded-3 mt-4">
             <h5 class="mb-4">Related categories</h5>
              <ul class="categories">
-                @foreach($realtedCategories as $category)
+                @foreach($relatedCategories as $category)
                 <li><a href="{{ url('categories', $category->slug) }}"><span>{{ $category->name }}</span> <span>38</span></a></li>
                 @endforeach
              </ul>
@@ -54,20 +54,19 @@
         <div class="col-md-9">
             <div class="d-flex align-items-center justify-content-between pb-4">
                 <a class="text-decoration-none text-dark" href="#">1-20 of {{ $companies->total() }} results</a>
-                <form action="" class="fromsa">
+                <form action="{{ url('categories', $category->slug) }}" class="fromsa">
                     <div class="p-1 bg-white rounded rounded-pill shadow-sm">
                         <div class="input-group">
-                            <input type="search" placeholder="Searching Company or Categories" aria-describedby="button-addon1" class="form-control border-0 bg-white">
+                            <input type="search" placeholder="Searching Company" aria-describedby="button-addon1" class="form-control border-0 bg-white" name="search">
                             <div class="input-group-append">
                                 <button id="button-addon1" type="submit" class="btn btn-link text-primary">
-                                    <img src="assets/images/icons/search-interface-symbol.png" width="20px" alt="">
+                                    <img src="{{ asset('assets/images/icons/search-interface-symbol.png')}}" width="20px" alt="">
                                 </button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            
             @if($companies->isEmpty())
                 <div class="no-companies bg-white p-4 rounded-3 text-center mb-3">
                     <p class="fs-5 text-dark">No companies found.</p>
@@ -76,23 +75,28 @@
                 @foreach($companies as $company)
                     <div class="list-wraps bg-white p-4 rounded-3 d-flex mb-3">
                         <div class="list-style1">
-                            <img class="rounded-circle" src="assets/images/user.jpg" alt="">
+                          @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
+                          <img class="rounded-circle" src="{{ asset('logos/' . $company->logo) }}" alt="{{ $company->website_url }}">
+                          @else
+                          <img class="rounded-circle" src="{{ asset('assets/images/company/1.png')}}" alt="{{ $company->website_url }}">
+                          @endif
                         </div>
                         <div class="list-style1 ps-5 d-flex align-items-center justify-content-between w-100">
                             <div class="box-styles">
-                                <p><a class="text-decoration-none fs-5 text-dark" href="detail.php">{{ $company->name }}</a></p>
+                                <p><a class="text-decoration-none fs-5 text-dark" href="{{ url('company/'. $company->website_url) }}">{{ $company->name }}</a></p>
                                 <ul class="mb-2">
                                     <li><a href="#"><i class="flaticon-rate me-1"></i> Rating score {{ $company->rating }}</a></li>
                                     <li><a href="#"><i class="flaticon-visibility me-1"></i> {{ $company->reviews_count }} reviews</a></li>
                                 </ul>
                                 <p>{{ $company->location }}</p>
-                                {{-- <div class="btn-group">
-                                    @foreach($company->categories as $category)
+                                <div class="btn-group">
+                                 
+                                    @foreach($company->category_names as $category)
                                         <a href="#" class="btn btn-light btn-sm rounded-pill me-2">{{ $category }}</a>
                                     @endforeach
-                                </div> --}}
+                                </div>
                             </div>
-                            <a class="btn btn-light" href="detail.php"><span class="btn-title">View Profile</span></a>
+                            <a class="btn btn-light" href="{{ url('company/'. $company->website_url) }}"><span class="btn-title">View Profile</span></a>
                         </div>
                     </div>
                 @endforeach
