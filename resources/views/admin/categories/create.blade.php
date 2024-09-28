@@ -40,16 +40,6 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    {{-- <label for="Status">Status</label>
-                    <select class="form-select @error('status') is-invalid @enderror" id="Status" name="status">
-                        <option selected disabled>Select status</option>
-                        <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
-                        <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
-                    </select>
-                    @error('status')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror --}}
-                    
                 </div>
 
                 <div class="form-group">

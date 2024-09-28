@@ -22,9 +22,9 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
-        <i class="menu-icon mdi mdi-file-document"></i>
-        <span class="menu-title">Reviews</span>
+      <a class="nav-link" href="{{ route('blog.index') }}">
+        <i class="menu-icon fa fa-vcard-o"></i>
+        <span class="menu-title">Blogs</span>
       </a>
     </li>
   </ul>

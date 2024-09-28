@@ -2,9 +2,7 @@
 
 @section('content')
 <section class="hero-banner-inner">
-    <!-- <div class="banner-img">
-      <img src="assets/images/banner.jpg" alt="Review Bazzar" class="img-fluid">
-    </div> -->
+  
     <div class="container">
       <div class="row align-items-cneter justify-content-center pt-5">
         <div class="col-md-7">

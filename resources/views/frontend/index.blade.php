@@ -193,58 +193,25 @@
            </div>
         </div>
     <div class="row">
+      @foreach($blogs as $blog)
       <div class="col-md-3">
         <div class="card">
           <div class="blog-img">
-          <img src="{{ asset('assets/images/Listing-image-6.png')}}" class="card-img-top" alt="...">
-          <span>Aug 30, 2024</span>
+          @if($blog->image && file_exists(public_path('images/blog/' . $blog->image)))
+                <img class="card-img-top" src="{{ asset('images/blog/' . $blog->image) }}" alt="...">
+          @else
+                <img src="{{ asset('assets/images/Listing-image-6.png')}}" class="card-img-top" alt="...">
+          @endif
+          <span>{{ $blog->created_at->format('M d, Y') }}</span>
           </div>
           <div class="card-body">
-            <a class="fs-5 text-decoration-none title" href="#">The Best roller coaster ride in the world</a>
-            <p class="card-text">Ut id mauris erat. Pellentesque ultrices, tortor ut congue auctor, ex dui por ta augue, vel accumsan...</p>
-            <a href="#">Read more</a>
+            <a class="fs-5 text-decoration-none title" href="{{ url('blog/' . $blog->slug) }}">{{ $blog->title }}</a>
+            <p class="card-text">{!! \Illuminate\Support\Str::limit(strip_tags($blog->description), 100, '...') !!}</p>
+            <a href="{{ url('blog/' . $blog->slug) }}">Read more</a>
           </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="card">
-          <div class="blog-img">
-          <img src="{{ asset('assets/images/Listing-image-7.png')}}" class="card-img-top" alt="...">
-          <span>Aug 30, 2024</span>
-          </div>
-          <div class="card-body">
-            <a class="fs-5 text-decoration-none title" href="#">The Best roller coaster ride in the world</a>
-            <p class="card-text">Ut id mauris erat. Pellentesque ultrices, tortor ut congue auctor, ex dui por ta augue, vel accumsan...</p>
-            <a href="#">Read more</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-          <div class="blog-img">
-          <img src="{{ asset('assets/images/Listing-image-8.png')}}" class="card-img-top" alt="...">
-          <span>Aug 30, 2024</span>
-          </div>
-          <div class="card-body">
-            <a class="fs-5 text-decoration-none title" href="#">The Best roller coaster ride in the world</a>
-            <p class="card-text">Ut id mauris erat. Pellentesque ultrices, tortor ut congue auctor, ex dui por ta augue, vel accumsan...</p>
-            <a href="#">Read more</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-          <div class="blog-img">
-          <img src="{{ asset('assets/images/Listing-image-6.png')}}" class="card-img-top" alt="...">
-          <span>Aug 30, 2024</span>
-          </div>
-          <div class="card-body">
-            <a class="fs-5 text-decoration-none title" href="#">The Best roller coaster ride in the world</a>
-            <p class="card-text">Ut id mauris erat. Pellentesque ultrices, tortor ut congue auctor, ex dui por ta augue, vel accumsan...</p>
-            <a href="#">Read more</a>
-          </div>
-        </div>
-      </div>
+     @endforeach
     </div>
   </div>
 </section>

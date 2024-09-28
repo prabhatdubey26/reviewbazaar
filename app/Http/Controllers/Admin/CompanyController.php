@@ -30,7 +30,7 @@ class CompanyController extends Controller
         // Handle the logo upload
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
-            $logoName = time() . '_' . $logo->getClientOriginalName();
+            $logoName = time() . '.' . $logo->getClientOriginalExtension();
             $destinationPath = public_path('logos'); 
             $logo->move($destinationPath, $logoName); 
             $company->logo = $logoName;
@@ -67,7 +67,7 @@ class CompanyController extends Controller
         }
 
         $logo = $request->file('logo');
-        $logoName = time() . '_' . $logo->getClientOriginalName();
+        $logoName = time() . '.' . $logo->getClientOriginalExtension();
         $destinationPath = public_path('logos'); 
         $logo->move($destinationPath, $logoName); 
         $company->logo = $logoName;

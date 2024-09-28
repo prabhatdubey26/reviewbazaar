@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\Category;
 use App\Models\Company;
+use App\Models\Blog;
 
 
 
@@ -13,10 +14,17 @@ class HomeController extends Controller
 {
     public function index()
     {
-       $categories = Category::latest()->get();
+       $blogs = Blog::latest()->take(4)->get();
        $companies = Company::latest()->get();
+       return view('frontend.index', compact('companies','blogs'));
+    }
 
-       return view('frontend.index', compact('companies'));
+    public function blog()
+    {   
+       $blogs = Blog::latest()->take(6)->get();
+       $categories = Category::latest()->take(6)->get();
+       $recentBlogs = Blog::latest()->take(3)->get();
+       return view('frontend.blog.index', compact('blogs','categories','recentBlogs'));
     }
 
     public function signup()

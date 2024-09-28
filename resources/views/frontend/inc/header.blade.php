@@ -38,7 +38,7 @@
           <a class="nav-link" href="#">About us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
+          <a class="nav-link" href="{{ route('blog') }}">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact us</a>
@@ -46,16 +46,14 @@
       </ul>
       <div class="d-flex ps-5">
         @if(Auth::user())
-        <a href="#" class="mx-1" ><img src="assets/images/icons/user.png" width="20px"></a>
+        <a href="#" class="mx-1" ><img src="{{ asset('assets/images/icons/user.png')}}" width="20px"></a>
         <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
         <a href="{{ url('logout') }}" class="mx-1" >
           Logout
         </a>
         @else
-        <a href="#"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="assets/images/icons/user.png" width="20px"></a>
-
+        <a href="#"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="{{ asset('assets/images/icons/user.png')}}" width="20px"></a>
         @endif
-       
      </div>
     </div>
   </div>

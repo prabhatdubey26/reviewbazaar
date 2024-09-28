@@ -46,7 +46,7 @@ class CategoryController extends Controller
         // Handle the image upload
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName(); 
+            $imageName = time() . '.' . $image->getClientOriginalExtension(); 
             $destinationPath = public_path('images/category');
             $image->move($destinationPath, $imageName);
             $category->image = $imageName; 
@@ -68,33 +68,33 @@ class CategoryController extends Controller
 
     // Update method
     public function update(StoreCategoryRequest $request, Category $category)
-{
-    $category->name = $request->name;
-    $category->status = $request->status;
-    $category->slug = $request->name; // Ensure to use a proper slug function
-    $category->is_parent = $request->category ?? '0';
-    
-    if ($request->hasFile('image')) {
-        // Remove old image if it exists
-        if ($category->image) {
-            $oldImagePath = public_path('images/category/' . $category->image);
-            if (file_exists($oldImagePath)) {
-                unlink($oldImagePath);
+    {
+        $category->name = $request->name;
+        $category->status = $request->status;
+        $category->slug = $request->name; // Ensure to use a proper slug function
+        $category->is_parent = $request->category ?? '0';
+        
+        if ($request->hasFile('image')) {
+            // Remove old image if it exists
+            if ($category->image) {
+                $oldImagePath = public_path('images/category/' . $category->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
             }
+
+            // Store new image
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('images/category');
+            $image->move($destinationPath, $imageName);
+            $category->image = $imageName;
         }
+        
+        $category->save();
 
-        // Store new image
-        $image = $request->file('image');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $destinationPath = public_path('images/category');
-        $image->move($destinationPath, $imageName);
-        $category->image = $imageName;
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
     }
-    
-    $category->save();
-
-    return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
-}
 
 
     // Destroy method

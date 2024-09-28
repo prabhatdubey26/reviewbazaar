@@ -36,7 +36,7 @@ class PageController extends Controller
         // Handle the image upload
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName(); 
+            $imageName = time() . '.' . $image->getClientOriginalExtension(); 
             $destinationPath = public_path('images/pages');
             $image->move($destinationPath, $imageName);
             $page->image = $imageName; 
@@ -71,7 +71,7 @@ class PageController extends Controller
             }
 
             $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('images/pages');
             $image->move($destinationPath, $imageName);
             $page->image =  $imageName;

@@ -27,7 +27,7 @@
 
                 <div class="form-group">
                     <label for="website_url">Website URL</label>
-                    <input type="url" class="form-control @error('website_url') is-invalid @enderror" id="website_url" name="website_url" placeholder="Enter website URL" value="{{ old('website_url', $company->website_url) }}">
+                    <input type="text" class="form-control @error('website_url') is-invalid @enderror" id="website_url" name="website_url" placeholder="Enter website URL" value="{{ old('website_url', $company->website_url) }}">
                     @error('website_url')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

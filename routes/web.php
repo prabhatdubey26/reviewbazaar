@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\BlogController;
+
 
 
 require __DIR__.'/admin.php';
@@ -14,6 +16,8 @@ Route::post('/signup', [LoginController::class, 'register'])->name('register');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog-details');
 Route::get('/categories/{slug}', [CategoryController::class, 'show']);
 
 
