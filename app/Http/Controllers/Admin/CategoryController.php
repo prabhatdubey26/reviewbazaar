@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use App\Models\Company;
+use App\Models\Blog;
+use DB;
 
 
 class CategoryController extends Controller
@@ -95,16 +97,37 @@ class CategoryController extends Controller
     }
 
 
-    // Destroy method
     public function destroy(Category $category)
     {
-        if ($category->image) {
-            $oldImagePath = public_path('images/category/'.$category->image);
-            if (file_exists($oldImagePath)) {
-                unlink($oldImagePath); // Remove the image
+        DB::transaction(function() use ($category) {
+            $companies = Company::whereRaw("FIND_IN_SET(?, category)", [$category->id])->get();
+    
+            foreach ($companies as $company) {
+
+                $categoryIds = explode(',', $company->category);
+                $updatedCategoryIds = array_filter($categoryIds, function($id) use ($category) {
+                    return trim($id) != $category->id; 
+                });
+    
+                $newCategoryIds = implode(',', $updatedCategoryIds);
+    
+                $company->update(['category' => $newCategoryIds]);
             }
-        }
-        $category->delete();
+    
+            if ($category->image) {
+                $oldImagePath = public_path('images/category/' . $category->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath); 
+                }
+            }
+    
+            Blog::where('category_id', $category->id)->delete();
+    
+            $category->delete();
+        });
+    
+        // Redirect back with a success message
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully!');
     }
+    
 }

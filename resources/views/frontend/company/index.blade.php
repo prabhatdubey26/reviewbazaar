@@ -118,7 +118,7 @@
           <div class="bg-white p-4 rounded-3 mt-4">
             <h5 class="mb-4">{{ $company->website_url }}</h5>
             @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
-            <img class="img-fluid rounded-3 border p-2 bg-light" src="{{ asset('logos/', $company->logo)}}" alt="{{ $company->website_url }}">
+            <img class="img-fluid rounded-3 border p-2 bg-light" src="{{ asset('logos/' . $company->logo) }}" alt="{{ $company->website_url }}">
             @else
             <img class="img-fluid rounded-3 border p-2 bg-light" src="{{ asset('assets/images/company/1.png')}}" alt="{{ $company->website_url }}">
             @endif
