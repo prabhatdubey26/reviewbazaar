@@ -30,7 +30,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <label for="g-recaptcha-response">Captcha</label>
+                            {{-- <label for="g-recaptcha-response">Captcha</label> --}}
                             <div class="g-recaptcha mb-4" data-sitekey={{config('services.recaptcha.key')}}></div>
                             @error('g-recaptcha-response')
                                 <span class="text-danger">{{ $message }}</span>
