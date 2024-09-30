@@ -31,11 +31,10 @@
                                 @enderror
                             </div>
                             <div class="g-recaptcha mb-4" data-sitekey={{config('services.recaptcha.key')}}></div>
+                            <label for="g-recaptcha-response">Captcha</label>
                             @error('g-recaptcha-response')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             <button type="submit" class="btn btn-primary">Login</button>
                         </form>
                         
