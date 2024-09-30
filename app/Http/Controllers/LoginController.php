@@ -54,8 +54,6 @@ class LoginController extends Controller
         }
     }
 
-    use App\Rules\ReCaptcha;
-
     public function register(Request $request)
     {
         $request->validate([
