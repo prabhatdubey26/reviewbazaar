@@ -8,6 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Support\Facades\Validator;
+use App\Rules\ReCaptcha;
 
 
 
@@ -53,61 +54,53 @@ class LoginController extends Controller
         }
     }
 
+    use App\Rules\ReCaptcha;
+
     public function register(Request $request)
     {
-        // Validate the request
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'g-recaptcha-response' => 'required|recaptcha'
-        ],
-        [
+            'g-recaptcha-response' => ['required', new ReCaptcha($request->input('g-recaptcha-response'))],
+        ], [
             'g-recaptcha-response.required' => 'Please complete the reCAPTCHA to proceed.',
-            'g-recaptcha-response.recaptcha' => 'The reCAPTCHA verification failed. Please try again.'
-        ]
-    );
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
+        ]);
+    
         // Create the user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-
+    
         return redirect()->back()->with('success', 'User registered successfully!');
     }
+    
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
-            'g-recaptcha-response' => 'required|recaptcha'
-            ],
-            [
-                'g-recaptcha-response.required' => 'Please complete the reCAPTCHA to proceed.',
-                'g-recaptcha-response.recaptcha' => 'The reCAPTCHA verification failed. Please try again.'
-            ]
-        );
-
+            'g-recaptcha-response' => ['required', new ReCaptcha($request->input('g-recaptcha-response'))],
+        ], [
+            'g-recaptcha-response.required' => 'Please complete the reCAPTCHA to proceed.',
+        ]);
+    
+        $credentials = $request->only('email', 'password');
+    
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/')->with('success', 'Login successful!'); // Adjust the intended route as necessary
+    
+            return redirect()->intended('/')->with('success', 'Login successful!');
         }
-
+    
         // If authentication fails, redirect back with an error
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->withInput();
     }
-
+    
     public function logout(Request $request)
     {
         Auth::logout();
