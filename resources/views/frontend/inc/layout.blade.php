@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('font/flaticon_alcebo.css')}}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.css')}}">
+    <script async src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
 @include('frontend.inc.header')
