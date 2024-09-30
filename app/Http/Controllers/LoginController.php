@@ -61,6 +61,8 @@ class LoginController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'g-recaptcha-response' => ['required', new ReCaptcha($request->input('g-recaptcha-response'))],
+        ],[
+            'g-recaptcha-response.required' => 'Please complete the CAPTCHA to proceed.',
         ]);
     
         // Create the user
@@ -79,6 +81,8 @@ class LoginController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
             'g-recaptcha-response' => ['required', new ReCaptcha($request->input('g-recaptcha-response'))],
+        ],[
+            'g-recaptcha-response.required' => 'Please complete the CAPTCHA to proceed.',
         ]);
     
         $credentials = $request->only('email', 'password');
