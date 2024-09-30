@@ -61,7 +61,12 @@ class LoginController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'g-recaptcha-response' => 'required|recaptcha'
-        ]);
+        ],
+        [
+            'g-recaptcha-response.required' => 'Please complete the reCAPTCHA to proceed.',
+            'g-recaptcha-response.recaptcha' => 'The reCAPTCHA verification failed. Please try again.'
+        ]
+    );
 
         if ($validator->fails()) {
             return redirect()->back()
@@ -84,7 +89,12 @@ class LoginController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
             'g-recaptcha-response' => 'required|recaptcha'
-        ]);
+            ],
+            [
+                'g-recaptcha-response.required' => 'Please complete the reCAPTCHA to proceed.',
+                'g-recaptcha-response.recaptcha' => 'The reCAPTCHA verification failed. Please try again.'
+            ]
+        );
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();

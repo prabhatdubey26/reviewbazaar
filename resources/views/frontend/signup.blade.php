@@ -58,7 +58,11 @@
                                 @enderror
                             </div>
                             <div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div>
-
+                            @error('password_confirmation')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             <button type="submit" class="btn btn-primary">Sign Up</button>
                         </form>
                         
