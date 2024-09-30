@@ -60,6 +60,7 @@ class LoginController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'g-recaptcha-response' => 'required|recaptcha'
         ]);
 
         if ($validator->fails()) {
@@ -82,6 +83,7 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
+            'g-recaptcha-response' => 'required|recaptcha'
         ]);
 
         if (Auth::attempt($credentials)) {
