@@ -31,12 +31,12 @@ class ReviewController extends Controller
             'review' => 'nullable|string|max:1000',
             'comment' => 'nullable|string|max:1000',
         ]);
-    
         // Create the review using mass-assignment
         $review = Review::create($validated);
-    
+        $company = Company::where('id',$request->company_id)->first();
+        $companyUrl = 'company/'.$company->website_url;
         // Return a response or redirect
-        return redirect()->back()->with('success', 'Review submitted successfully.');
+        return redirect($companyUrl)->with('success', 'Review submitted successfully.');
     }
     
 }
