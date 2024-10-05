@@ -104,7 +104,8 @@
 
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select class="form-select @error('category') is-invalid @enderror" id="category" name="categories[]" multiple>
+                    <select class="form-select mb-4 @error('category') is-invalid @enderror" id="category" name="categories[]" multiple style="height:
+                    100px">
                         <option selected disabled>Select category</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ is_array(old('categories')) && in_array($category->id, old('categories')) ? 'selected' : '' }}>{{ $category->name }}</option>

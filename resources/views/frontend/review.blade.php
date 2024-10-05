@@ -90,8 +90,8 @@
                                     <input class="rating__input @error('rating') is-invalid @enderror" name="review" id="rating-5" value="5" type="radio">
                                 </div>
                             </div>
-                            @error('rating')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                            @error('review')
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -102,7 +102,7 @@
                                 <label for="floatingTextarea2">Comments</label>
                             </div>
                             @error('comment')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 

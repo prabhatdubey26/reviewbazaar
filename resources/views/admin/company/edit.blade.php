@@ -102,7 +102,8 @@
                     @enderror
                 </div>
 
-                <select class="form-select @error('category') is-invalid @enderror" id="category" name="categories[]" multiple>
+                <select class="form-select mb-4 @error('category') is-invalid @enderror" id="category" name="categories[]" multiple style="height:
+                    100px">
                     <option disabled>Select category</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" 
@@ -111,9 +112,6 @@
                         </option>
                     @endforeach
                 </select>
-                
-                
-
                 <button type="submit" class="btn btn-primary me-2">Update</button>
                 <button type="button" class="btn btn-light" onclick="window.history.back();">Cancel</button>
             </form>

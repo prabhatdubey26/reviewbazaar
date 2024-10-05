@@ -18,14 +18,14 @@ class StoreCompanyRequest extends FormRequest
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Logo validation
             'about' => 'nullable|string',
             'verified' => 'boolean',
-            'website_url' => 'nullable',
-            'email' => 'nullable|email',
-            'phone' => 'nullable|string',
+            'website_url' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|string',
             'address' => 'nullable|string',
             'country' => 'nullable|string',
             'city' => 'nullable|string',
             'zip' => 'nullable|string',
-            'category' => 'nullable|array', // Categories as an array
+            'category' => 'required|array', // Categories as an array
             'status' => 'required|in:active,inactive',
         ];
     }

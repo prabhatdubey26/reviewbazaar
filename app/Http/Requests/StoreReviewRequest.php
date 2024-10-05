@@ -18,11 +18,12 @@ class StoreReviewRequest extends FormRequest
         return [
             'user_id' => 'required|integer|exists:users,id', // Ensure the user exists
             'company_id' => 'required|integer|exists:companies,id', // Ensure the company exists
-            'name' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:20',
-            'review' => 'nullable|string|max:1000',
-            'comment' => 'nullable|string|max:1000',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'review' => 'required|string|max:1000',
+            'comment' => 'required|string|max:1000',
+            'agreement'=>'required'
         ];
     }
 
