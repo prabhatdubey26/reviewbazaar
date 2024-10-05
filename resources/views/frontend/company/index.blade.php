@@ -51,7 +51,9 @@
                       <div class="d-flex justify-content-between">
                           <div class="d-flex align-items-center">
                               <div class="user-icons">
+                                @if(Auth::user())
                                 {{ Auth::user()->getInitials() }}
+                                @endif
                               </div>
                               <div class="ps-3">
                                 @if(Auth::user())
@@ -120,20 +122,6 @@
            
         </div>
         <div class="col-md-3">
-          {{-- <div class="bg-white p-4 rounded-3">
-           <form action='' metthod='POST'>
-            <h5 class="mb-4">Location</h5>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>United States</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-               <div class="mt-3">
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="City or Zip Code">
-               </div>
-           </form>
-          </div> --}}
           <div class="bg-white p-4 rounded-3 ">
             <h5 class="mb-4">{{ $company->website_url }}</h5>
             @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
