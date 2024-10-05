@@ -32,6 +32,31 @@ class HomeController extends Controller
        return view('frontend.signup');
     }
 
+    public function category()
+    {
+       return view('frontend.category');
+    }
+
+    public function subCategory(Request $request, $slug)
+    {
+      $category = Category::where('slug',$slug)->first();
+      if(!$category) {
+        abort(404);
+      }
+      $query = Category::where('is_parent', $category->id);
+      
+      if ($request->has('name')) {
+         $query->where('name', 'like', '%' . $request->query('name') . '%');
+      }
+      $subCategories = $query->paginate(20);
+       return view('frontend.sub-category', compact('subCategories'));
+    }
+
+    public function review()
+    {
+       return view('frontend.review');
+    }
+
     public function login()
     {
        return view('frontend.login');

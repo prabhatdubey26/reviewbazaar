@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="form-group row">
-                    {{-- <div class="col-6">
+                    <div class="col-6">
                         <label for="Status">Category</label>
                         <select class="form-select @error('category') is-invalid @enderror" id="category" name="category">
                             <option selected disabled>Select category</option>
@@ -28,8 +28,8 @@
                         @error('category')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </div> --}}
-                    <div class="col-12">
+                    </div>
+                    <div class="col-6">
                         <label for="Status">Status</label>
                         <select class="form-select @error('status') is-invalid @enderror" id="Status" name="status">
                             <option selected disabled>Select status</option>

@@ -1,31 +1,32 @@
 @extends('frontend.inc.layout')
 
 @section('content')
-<section class="hero-banner">
+<section class="hero-banner position-relative">
   <div class="banner-img">
-    <img src="{{ asset('assets/images/banner.jpg')}}" alt="Review Bazzar" class="img-fluid">
+    <img src="{{ asset('assets/images/banner.jpg')}}" class="img-fluid" alt="">
   </div>
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="heading-wrapper">
-          <h1 class="display-5 fw-semibold text-white text-uppercase px-4 px-lg-0">Welcome To The Biggest<span class="d-md-block"> Business Directory</span></h1>
-         <form action="" class="fromsa">
-          <div class="p-1 bg-white rounded rounded-pill shadow-sm my-4 py-2">
-            <div class="input-group">
-              <input type="search" placeholder="Searching Company or Categories" aria-describedby="button-addon1" class="form-control border-0 bg-white">
-              <div class="input-group-append">
-                <button id="button-addon1" type="submit" class="btn btn-link text-primary"><img src="{{ asset('assets/images/icons/search-interface-symbol.png')}}" width="20px" alt=""></button>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-8">
+        <div class="heading-wrapper text-center">
+          <h1 class="fs-2 fw-semibold text-uppercase px-4 px-lg-0 text-white">Welcome To The Biggest<span class="d-md-block"> Business Directory</span></h1>
+          <form action="" class="fromsa">
+            <div class="p-4 bg-white rounded rounded-pill shadow-sm my-4 py-2">
+              <div class="d-flex align-items-center justify-content-center">
+                <input type="text" placeholder="Location" `="" class="form-control border-0 bg-white">
+                <input type="text" placeholder="Searching Company" class="form-control border-0 bg-white">
+                <div class="input-group-append btn btn-primary h-100 rounded-pill">
+                  <button id="button-addon1" type="submit" class="btn btn-link text-primary"><img src="{{ asset('assets/images/search.png')}}" width="20px" alt=""></button>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
         </div>
       </div> 
     </div>
   </div>
 </section>
-<section class="py-4 category-wrappers">
+{{-- <section class="py-4 category-wrappers">
   <div class="container">
       <div class="row">
           <div class="col-md-12">
@@ -40,7 +41,7 @@
                                   
                                         @else
                                     <i class="flaticon-bank"></i>
-                                          {{-- <img src="{{ asset('assets/images/company/1.png') }}" width="70px" alt=""> --}}
+                                        
                                     @endif
                                       <!-- You can use a dynamic icon here if needed -->
                                   </div>
@@ -53,8 +54,32 @@
           </div>
       </div>
   </div>
-</section>
+</section> --}}
 
+<section class="py-5 category-wrappers bg-white">
+  <div class="container">
+    <div class="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-3">
+      @foreach($categories as $category)
+      <div class="col">
+          <div class="item-list align-items-center d-flex flex-column justify-content-between">
+             <div class="icons-list">
+                  <a href="{{ url('sub-category/'. $category->slug) }}">
+                    @if($category->image && file_exists(public_path('images/category/' . $category->image)))
+                    <img src="{{ asset('images/category/' . $category->image) }}" alt="">
+              
+                    @else
+                    <img src="{{ asset('assets/images/icons/automotive.png')}}" alt="">
+                    
+                @endif
+                  </a>
+              </div>
+             <a class="text-decoration-none text-dark" href="{{ url('sub-category/'. $category->slug) }}">{{$category->name??''}}</a>
+          </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
+</section>
 <section class="copmany-wrapper py-6">
   <div class="container">
       <div class="d-flex align-items-center justify-content-between">

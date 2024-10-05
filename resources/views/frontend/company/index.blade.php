@@ -54,8 +54,12 @@
                                   BM
                               </div>
                               <div class="ps-3">
-                                  <h6 class="mb-0"><a class="text-decoration-none" href="#">Write a review</a></h6>
-                              </div>
+                                @if(Auth::user())
+                                  <h6 class="mb-0"><a class="text-decoration-none" href="{{ url('review', $company->slug) }}">Write a review</a></h6>
+                                @else
+                                <h6 class="mb-0"><a class="text-decoration-none" href="{{ url('login') }}">Write a review</a></h6>
+                                @endif
+                                </div>
                           </div>
                           <div id="full-stars-example-two">
                               <div class="rating-group">
@@ -101,7 +105,7 @@
            
         </div>
         <div class="col-md-3">
-          <div class="bg-white p-4 rounded-3">
+          {{-- <div class="bg-white p-4 rounded-3">
            <form action='' metthod='POST'>
             <h5 class="mb-4">Location</h5>
               <select class="form-select" aria-label="Default select example">
@@ -114,8 +118,8 @@
                   <input type="email" class="form-control" id="exampleInputEmail1" placeholder="City or Zip Code">
                </div>
            </form>
-          </div>
-          <div class="bg-white p-4 rounded-3 mt-4">
+          </div> --}}
+          <div class="bg-white p-4 rounded-3 ">
             <h5 class="mb-4">{{ $company->website_url }}</h5>
             @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
             <img class="img-fluid rounded-3 border p-2 bg-light" src="{{ asset('logos/' . $company->logo) }}" alt="{{ $company->website_url }}">

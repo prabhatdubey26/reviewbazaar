@@ -20,13 +20,13 @@ class CategoryController extends Controller
 
     public function create()
     {
-      $categories = Category::where(['is_parent'=>0])->get();
+      $categories = Category::get();
        return view('admin.categories.create', compact('categories'));
     }
 
     public function show(Request $request, $slug)
 {
-    $category = Category::where('slug', $slug)->with('companies')->first();
+    $category = Category::where('slug', $slug)->with(['companies','parent'])->first();
 
     if ($category) {
         $companies = Company::whereRaw("FIND_IN_SET(?, category)", [$category->id])->where(['status'=>'active']);
@@ -63,7 +63,7 @@ class CategoryController extends Controller
             $category->image = $imageName; 
         }
     
-        // $category->is_parent = $request->category ?? 0;
+        $category->is_parent = $request->category ?? 0;
         $category->status = $request->status ?? 'active';
         $category->save();
     
@@ -73,7 +73,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        $categories = Category::where(['is_parent'=>0])->get();
+        $categories = Category::get();
         return view('admin.categories.edit', compact('category','categories'));
     }
 
@@ -83,7 +83,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->status = $request->status;
         $category->slug = $request->name; 
-        // $category->is_parent = $request->category ?? 0;
+        $category->is_parent = $request->category ?? 0;
         
         if ($request->hasFile('image')) {
             if ($category->image) {

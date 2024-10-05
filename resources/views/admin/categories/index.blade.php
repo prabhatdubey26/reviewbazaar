@@ -18,7 +18,7 @@
                 <thead>
                   <tr>
                     <th> Name </th>
-                    {{-- <th> Parent Category</th> --}}
+                    <th> Parent Category</th>
                     <th> Slug </th>
                     <th> Logo </th>
                     <th> Status </th>
@@ -29,7 +29,7 @@
                     @foreach($categories as $category)
                   <tr>
                     <td> {{ $category->name }} </td>
-                    {{-- <td> {{ $category->parent->name ?? '' }} </td> --}}
+                    <td> {{ $category->parent->name ?? '' }} </td>
 
                     <td> {{ $category->slug }} </td>
 
