@@ -59,6 +59,7 @@ class User extends Authenticatable
 
         // Split the name into words, and get the first letter of each word
         $initials = collect(explode(' ', $userName))
+            ->take(2)
             ->map(fn($word) => strtoupper(substr($word, 0, 1)))  // Get first letter and convert to uppercase
             ->implode('');  // Combine the initials
 

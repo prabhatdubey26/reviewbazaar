@@ -43,7 +43,7 @@
                               <li><a href="#"><i class="flaticon-visibility me-1"></i>  {{ $company->reviewCount() }} reviews</a></li>
                           </ul>
                       </div>
-                      <a class="btn btn-light" href="#"><span class="btn-title">{{ $company->website_url }}</span></a>
+                      <a class="btn btn-light" href="http://{{ $company->website_url }} " target="_blank"><span class="btn-title">{{ $company->website_url }}</span></a>
                   </div>
               </div>
   
@@ -123,7 +123,7 @@
         </div>
         <div class="col-md-3">
           <div class="bg-white p-4 rounded-3 ">
-            <h5 class="mb-4">{{ $company->website_url }}</h5>
+            <h5 class="mb-4"><a href="http://{{ $company->website_url }} " target="_blank"> {{ $company->website_url }} </a></h5>
             @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
             <img class="img-fluid rounded-3 border p-2 bg-light" src="{{ asset('logos/' . $company->logo) }}" alt="{{ $company->website_url }}">
             @else

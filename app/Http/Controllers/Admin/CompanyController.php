@@ -35,6 +35,9 @@ class CompanyController extends Controller
             $company->logo = $logoName;
         }
 
+        if($request->website_url){
+          $company->website_url =  preg_replace('#^https?://#', '', rtrim($request->website_url, '/'));
+        }
         if ($request->has('categories')) {
             $company->category = implode(',', $request->categories);
         }
@@ -79,6 +82,10 @@ class CompanyController extends Controller
             $destinationPath = public_path('logos'); 
             $logo->move($destinationPath, $logoName); 
             $company->logo = $logoName;
+        }
+
+        if($request->website_url){
+            $company->website_url =  preg_replace('#^https?://#', '', rtrim($request->website_url, '/'));
         }
 
         if ($request->has('categories')) {
