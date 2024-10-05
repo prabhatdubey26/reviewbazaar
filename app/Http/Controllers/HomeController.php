@@ -49,6 +49,9 @@ class HomeController extends Controller
          $query->where('name', 'like', '%' . $request->query('name') . '%');
       }
       $subCategories = $query->paginate(20);
+      if ($subCategories->isEmpty()) {
+         return redirect('categories/' . $category->slug);
+      }
        return view('frontend.sub-category', compact('subCategories'));
     }
 

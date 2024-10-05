@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
     public function show(Request $request, $slug)
 {
-    $category = Category::where('slug', $slug)->with(['companies','parent'])->first();
+    $category = Category::where('slug', $slug)->with(['parent'])->first();
 
     if ($category) {
         $companies = Company::whereRaw("FIND_IN_SET(?, category)", [$category->id])->where(['status'=>'active']);
@@ -39,7 +39,9 @@ class CategoryController extends Controller
         $relatedCategories = Category::where('is_parent', $category->is_parent)
             ->where('id', '!=', $category->id)
             ->get();
-
+            $relatedCategories->each(function($relatedCategory) {
+                $relatedCategory->company_count = $relatedCategory->companyCount(); 
+            });
         return view('frontend.category.details', compact('category', 'companies', 'relatedCategories'));
     } else {
         abort(404);

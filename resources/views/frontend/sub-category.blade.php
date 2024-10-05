@@ -30,7 +30,7 @@
           <form action="" class="">
               <div class="p-1 rounded rounded-pill shadow-sm">
               <div class="input-group">
-                  <input type="search" name="name" placeholder="Search" aria-describedby="button-addon1" class="form-control border-0 bg-whites" value="{{ request()->query('name') }}">
+                  <input type="search" name="name" placeholder="Search" aria-describedby="button-addon1" class="form-control border-0 bg-whites" value="{{ old('name') }}">
                   <div class="input-group-append">
                   <button id="button-addon1" type="submit" class="btn btn-link text-primary"><img src="{{ asset('assets/images/icons/search-interface-symbol.png')}}" width="20px" alt=""></button>
                   </div>

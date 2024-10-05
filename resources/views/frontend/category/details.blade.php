@@ -16,7 +16,9 @@
              <div class="navbars pt-4">
               <ul>
                 <li><a href="/">Home</a></li>
+                @if($category->parent)
                 <li><a href="{{ url('sub-category',$category->parent->slug) }}">{{ $category->parent->name ??'' }}</a></li>
+                @endif
                 <li>{{ $category->name }}</li>
               </ul>
              </div>
@@ -46,7 +48,7 @@
             <h5 class="mb-4">Related categories</h5>
              <ul class="categories">
                 @foreach($relatedCategories as $category)
-                <li><a href="{{ url('categories', $category->slug) }}"><span>{{ $category->name }}</span> <span>38</span></a></li>
+                <li><a href="{{ url('categories', $category->slug) }}"><span>{{ $category->name }}</span> <span>{{ $category->company_count }}</span></a></li>
                 @endforeach
              </ul>
           </div>

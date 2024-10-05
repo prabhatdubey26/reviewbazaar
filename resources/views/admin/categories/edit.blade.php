@@ -18,17 +18,22 @@
 
                 <div class="form-group row">
                     <div class="col-6">
-                        <label for="Status">Category</label>
+                        <label for="category">Category</label>
                         <select class="form-select @error('category') is-invalid @enderror" id="category" name="category">
-                            <option selected disabled>Select category</option>
+                            <option selected value="0">Select category</option>
                             @foreach($categories as $category1)
-                                <option value="{{ $category1->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>{{ $category1->name }}</option>
+                                <!-- Ensure that the category being edited is marked as selected -->
+                                <option value="{{ $category1->id }}" {{ old('category', $category->id) == $category1->id ? 'selected' : '' }}>
+                                    {{ $category1->name }}
+                                </option>
                             @endforeach
                         </select>
                         @error('category')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+         
+                
                     <div class="col-6">
                         <label for="Status">Status</label>
                         <select class="form-select @error('status') is-invalid @enderror" id="Status" name="status">

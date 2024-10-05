@@ -29,11 +29,6 @@ class Category extends Model
         $this->attributes['slug'] = $slug;
     }
 
-    // public function subcategories()
-    // {
-    //     return $this->hasMany(Category::class, 'is_parent', 'id');
-    // }
-
     // Relation to get the parent category
     public function parent()
     {
@@ -41,7 +36,13 @@ class Category extends Model
     }
 
     public function companies()
-    {
-        return $this->hasMany(Company::class, 'category', 'id');
-    }
+{
+    return Company::whereRaw('FIND_IN_SET(?, category)', [$this->id]);
+}
+
+public function companyCount()
+{
+    return $this->companies()->count();
+}
+
 }
