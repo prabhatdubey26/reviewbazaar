@@ -39,8 +39,8 @@
                       <div class="box-styles">
                           <p><a class="text-decoration-none fs-5 text-dark" href="#">{{$company->name}}</a></p>
                           <ul class="mb-2">
-                              <li><a href="#"><i class="flaticon-rate  me-1"></i> Rating score 4.9</a></li>
-                              <li><a href="#"><i class="flaticon-visibility me-1"></i> 27,497 reviews</a></li>
+                              <li><a href="#"><i class="flaticon-rate  me-1"></i> Rating score {{$company->averageRating()}}</a></li>
+                              <li><a href="#"><i class="flaticon-visibility me-1"></i>  {{ $company->reviewCount() }} reviews</a></li>
                           </ul>
                       </div>
                       <a class="btn btn-light" href="#"><span class="btn-title">{{ $company->website_url }}</span></a>
@@ -51,11 +51,11 @@
                       <div class="d-flex justify-content-between">
                           <div class="d-flex align-items-center">
                               <div class="user-icons">
-                                  BM
+                                {{ Auth::user()->getInitials() }}
                               </div>
                               <div class="ps-3">
                                 @if(Auth::user())
-                                  <h6 class="mb-0"><a class="text-decoration-none" href="{{ url('review', $company->slug) }}">Write a review</a></h6>
+                                  <h6 class="mb-0"><a class="text-decoration-none" href="{{ url('review', $company->website_url) }}">Write a review</a></h6>
                                 @else
                                 <h6 class="mb-0"><a class="text-decoration-none" href="{{ url('login') }}">Write a review</a></h6>
                                 @endif
@@ -78,29 +78,44 @@
                              </div>
                       </div>
                   </div>
-              <div class="bg-white p-md-4 rounded-3">
-                  <div class="rounded-3 border-bottom pb-4">
-                      <div class="d-flex justify-content-between">
-                          <div class="d-flex align-items-center">
-                              <div class="user-icons">
-                                  BM
-                              </div>
-                              <div class="ps-3">
-                                  <h6 class="mb-0">Bronislava Mynbaeva</h6>
-                                  <small>1 Review</small>
-                              </div>
-                          </div>
-                          <div>
-                              <small class="mb-0">12 hours ago</small>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="pt-4">
-                      <h6>I communicated with two agents</h6>
-                      <p class="mb-0">I communicated with two agents, Jason and Shana. Jason was on chat; clearly and professionally he explained the company's policy and answered our general questions. When we asked more detailed questions, he recommended to talk over the phone with Shana, and it was a good advice. Shana spent some time to go over the insurance policy, explaining its benefits and limitations. Eventually, she helped us to purchase the policy that most fits our requirements and conditions. Thank you both, Jason and Shana!</p>
-                  </div>
-                 
-              </div> 
+                  @php
+                    $reviews = $company->reviews;
+                  @endphp
+             @foreach($reviews as $review)
+                <div class="bg-white p-md-4 rounded-3">
+                    <div class="rounded-3 border-bottom pb-4">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <div class="user-icons">
+                                    {{ $review->user->getInitials() }}
+                                </div>
+                                <div class="ps-3">
+                                    <h6 class="mb-0">{{ $review->user->name }}</h6>
+                                   {{-- Assuming $review->review is an integer from 1 to 5 --}}
+                                   <small>
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $review->review)
+                                            <i class="flaticon-star filled"></i>  {{-- Full star with yellow fill --}}
+                                        @else
+                                            <i class="flaticon-star-empty"></i>  {{-- Empty star --}}
+                                        @endif
+                                    @endfor
+                                    {{ $review->review }} Rating *
+                                </small>
+                                
+                                </div>
+                            </div>
+                            <div>
+                                <small class="mb-0">{{$review->created_at->diffForHumans() }}</small>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <p class="mb-0">{{ $review->comment }}!</p>
+                        </div>
+                    </div>
+                    
+                </div> 
+              @endforeach
           </div> 
            
         </div>

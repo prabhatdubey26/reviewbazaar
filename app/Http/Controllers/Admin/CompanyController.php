@@ -52,7 +52,7 @@ class CompanyController extends Controller
 
     public function show($url)
     {
-       $company = Company::where(['website_url'=>$url])->first();
+       $company = Company::where(['website_url'=>$url])->with('reviews')->first();
        if($company){
             return view('frontend.company.index', compact('company'));
        }

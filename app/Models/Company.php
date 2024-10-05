@@ -43,4 +43,24 @@ class Company extends Model
         return Category::whereIn('id', $categoryIds)->pluck('name')->toArray(); 
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'company_id', 'id');
+    }
+
+    public function reviewCount()
+    {
+        return $this->reviews()->count();
+    }
+
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    public function averageRating()
+    {
+        return $this->reviews()->avg('review');
+    }
+
 }

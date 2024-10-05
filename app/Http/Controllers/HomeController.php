@@ -55,11 +55,6 @@ class HomeController extends Controller
        return view('frontend.sub-category', compact('subCategories'));
     }
 
-    public function review()
-    {
-       return view('frontend.review');
-    }
-
     public function login()
     {
        return view('frontend.login');

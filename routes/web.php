@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CompanyController;
-
+use App\Http\Controllers\ReviewController;
 
 
 
@@ -21,7 +21,9 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/sub-category/{slug}', [HomeController::class, 'subCategory'])->name('sub-category');
-Route::get('/review', [HomeController::class, 'review'])->name('review');
+Route::get('/review/{slug}', [ReviewController::class, 'review'])->name('review');
+Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
+
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog-details');
 Route::get('/categories/{slug}', [CategoryController::class, 'show']);
 Route::get('/company/{website_url}', [CompanyController::class, 'show']);
