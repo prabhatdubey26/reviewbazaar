@@ -9,13 +9,18 @@ use App\Models\Company;
 use App\Models\Blog;
 
 
-
 class HomeController extends Controller
 {
     public function index()
     {
        $blogs = Blog::latest()->where(['status'=> 'active'])->take(4)->get();
-       $companies = Company::where(['status'=> 'active'])->latest()->get();
+       $companies = Company::where('status', 'active')
+       ->withAvg('reviews', 'review')  // Calculate the average review score for each company
+       ->having('reviews_avg_review', '>', 3)  // Only include companies with avg rating > 3
+       ->orderBy('reviews_avg_review','desc')
+       ->take(8) 
+       ->get();
+
        return view('frontend.index', compact('companies','blogs'));
     }
 

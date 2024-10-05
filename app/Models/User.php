@@ -56,7 +56,6 @@ class User extends Authenticatable
     {
         // Get the user's name
         $userName = $this->name;
-
         // Split the name into words, and get the first letter of each word
         $initials = collect(explode(' ', $userName))
             ->take(2)

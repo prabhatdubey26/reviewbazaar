@@ -94,7 +94,9 @@
                                 <div class="ps-3">
                                     <h6 class="mb-0">{{ $review->user->name }}</h6>
                                    {{-- Assuming $review->review is an integer from 1 to 5 --}}
-                                   <small>
+                                
+                                    <div id="full-stars-example-two">
+                                      <div class="rating-group">
                                     @for ($i = 1; $i <= 5; $i++)
                                         @if ($i <= $review->review)
                                             <i class="flaticon-star filled"></i>  {{-- Full star with yellow fill --}}
@@ -103,8 +105,8 @@
                                         @endif
                                     @endfor
                                     {{ $review->review }} Rating *
-                                </small>
-                                
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <div>

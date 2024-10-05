@@ -19,13 +19,12 @@
         <li class="nav-item">
           <a class="nav-link text-uppercase" href="{{ route('blog') }}">Blog</a>
         </li>
-        {{-- <li class="nav-item">
-          <a class="nav-link position-relative text-uppercase" href="{{ route('review') }}">Write Review
+        <li class="nav-item">
+          <a class="nav-link position-relative text-uppercase" href="{{ route('company.review') }}">Company Review
             <span class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger">
            WR
           </span>
-
-          </a> --}}
+          </a>
         </li>
       </ul>
       <div class="d-flex ps-5">

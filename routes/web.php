@@ -27,6 +27,8 @@ Route::post('/review/store', [ReviewController::class, 'store'])->name('review.s
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog-details');
 Route::get('/categories/{slug}', [CategoryController::class, 'show']);
 Route::get('/company/{website_url}', [CompanyController::class, 'show']);
+Route::get('/company-review', [CompanyController::class, 'review'])->name('company.review');
+
 
 
 

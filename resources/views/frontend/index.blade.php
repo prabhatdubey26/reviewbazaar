@@ -26,36 +26,6 @@
     </div>
   </div>
 </section>
-{{-- <section class="py-4 category-wrappers">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-12">
-              <div id="owl-carousel" class="owl-carousel owl-theme">
-                  @foreach($categories as $category)
-                      <div class="item">
-                          <a href="{{ url('categories', $category->slug) }}"> <!-- Update with your route -->
-                              <div class="category">
-                                  <div class="icons-list">
-                                    @if($category->image && file_exists(public_path('images/category/' . $category->image)))
-                                        <img src="{{ asset('images/category/' . $category->image) }}" height="50px"  alt="">
-                                  
-                                        @else
-                                    <i class="flaticon-bank"></i>
-                                        
-                                    @endif
-                                      <!-- You can use a dynamic icon here if needed -->
-                                  </div>
-                                  <h5 class="mb-0">{{ $category->name }}</h5> <!-- Display the category name -->
-                              </div>
-                          </a>
-                      </div>
-                  @endforeach
-              </div>
-          </div>
-      </div>
-  </div>
-</section> --}}
-
 <section class="py-5 category-wrappers bg-white">
   <div class="container">
     <div class="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-3">
@@ -88,7 +58,7 @@
               <p class="mb-0">Explore our Job Portal's to streamline your job search.</p>
            </div>
            <div class="d-none d-md-block">
-              <a class="btn btn-primary rounded-pill btn-lg" href="#">See more</a>
+              <a class="btn btn-primary rounded-pill btn-lg" href="{{ route('company.review') }}">See more</a>
            </div>
        </div>
     <div class="row g-4 pt-5">
@@ -110,17 +80,13 @@
                   <p class="text-primary">{{ $company->about }}</p>
                   <div id="full-stars-example-two">
                       <div class="rating-group">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star flaticon-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
+                        @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= $company->averageRating())
+                            <i class="flaticon-star filled"></i> 
+                        @else
+                            <i class="flaticon-star-empty"></i>
+                        @endif
+                    @endfor
                    </div>
                 </div>
             </div>

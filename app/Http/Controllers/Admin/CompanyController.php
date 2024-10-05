@@ -17,6 +17,13 @@ class CompanyController extends Controller
        return view('admin.company.index', compact('companies'));
     }
 
+    public function review()
+    {
+       $companies = Company::withAvg('reviews', 'review')  // Calculate the average review score for each company
+       ->orderBy('reviews_avg_review','desc')->paginate(20);
+       return view('frontend.company.list', compact('companies'));
+    }
+
     public function create()
     {
         $categories = Category::get();

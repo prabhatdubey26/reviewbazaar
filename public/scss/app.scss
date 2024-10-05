@@ -230,6 +230,9 @@ body{
   .rating__input:hover ~ .rating__label .rating__icon--star {
     color: #ddd;
   }
+  .rating-group {
+    color: orange;
+  }
 }
 
 .testimonial-wrapper{
