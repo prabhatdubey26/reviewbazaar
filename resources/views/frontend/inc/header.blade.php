@@ -31,7 +31,7 @@
       <div class="d-flex ps-5">
         @if(Auth::user())
         <a href="#" class="mx-1" ><img src="{{ asset('assets/images/icons/user.png')}}" width="20px"></a>
-        <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
+        <a class="nav-link" href="#">{{ Auth::user()->getInitials() }}</a>
         <a class="btn btn-primary btn-sm mx-2" href="{{ url('logout') }}" class="mx-1" >
           Logout
         </a>
