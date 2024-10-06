@@ -25,7 +25,7 @@ class StoreCompanyRequest extends FormRequest
             'country' => 'nullable|string',
             'city' => 'nullable|string',
             'zip' => 'nullable|string',
-            'category' => 'nullable|array', // Categories as an array
+            'category' => 'required|array', // Categories as an array
             'status' => 'required|in:active,inactive',
         ];
     }

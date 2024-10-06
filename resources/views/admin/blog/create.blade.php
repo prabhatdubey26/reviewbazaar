@@ -60,7 +60,31 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label for="meta_title">Meta Title</label>
+                    <input type="text" class="form-control @error('meta_title') is-invalid @enderror" id="meta_title" name="meta_title" placeholder="Meta Title" value="{{ old('meta_title') }}">
+                    @error('meta_title')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            
+                <!-- Meta Description -->
+                <div class="form-group">
+                    <label for="meta_description">Meta Description</label>
+                    <input type="text" class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" placeholder="Meta Description" value="{{ old('meta_description') }}">
+                    @error('meta_description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
+                 <!-- Meta Keywords -->
+                <div class="form-group">
+                    <label for="meta_key">Meta Keywords</label>
+                    <input type="text" class="form-control @error('meta_key') is-invalid @enderror" id="meta_key" name="meta_key" placeholder="Meta Keywords" value="{{ old('meta_key') }}">
+                    @error('meta_key')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                 <button type="button" class="btn btn-light" onclick="window.history.back();">Cancel</button>
             </form>

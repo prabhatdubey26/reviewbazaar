@@ -23,7 +23,7 @@
                             <option selected value="0">Select category</option>
                             @foreach($categories as $category1)
                                 <!-- Ensure that the category being edited is marked as selected -->
-                                <option value="{{ $category1->id }}" {{ old('category', $category->id) == $category1->id ? 'selected' : '' }}>
+                                <option value="{{ $category1->id }}" {{ old('category', $category->is_parent) == $category1->id ? 'selected' : '' }}>
                                     {{ $category1->name }}
                                 </option>
                             @endforeach

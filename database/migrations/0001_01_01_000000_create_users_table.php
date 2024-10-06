@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('social_id')->nullable();    // add social_id column with varchar type
             $table->string('social_type')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('profile')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

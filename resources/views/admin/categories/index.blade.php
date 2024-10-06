@@ -57,10 +57,14 @@
                   </tr>
                  @endforeach
                 </tbody>
+               
               </table>
             </div>
           </div>
         </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        {{ $categories->links('pagination::bootstrap-4') }}
       </div>
  </div>
 @endsection

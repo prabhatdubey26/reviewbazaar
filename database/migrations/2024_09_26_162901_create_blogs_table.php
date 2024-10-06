@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('slug');
             $table->string('image');
             $table->longText('description')->nullable()->default('');
+            $table->longText('meta_title')->nullable()->default('');
+            $table->longText('meta_key')->nullable()->default('');
+            $table->longText('meta_description')->nullable()->default('');
             $table->enum('status', ['active', 'inactive'])->default('active');;
             $table->timestamps();
         });

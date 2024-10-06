@@ -4,10 +4,10 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Company</h4>
-            <p class="card-description"> 
-                <a href="{{ route('company.create') }}" class="btn btn-primary">Add Company</a>
-            </p>
+            <h4 class="card-title">User</h4>
+            {{-- <p class="card-description"> 
+                <a href="{{ route('users.create') }}" class="btn btn-primary">Add User</a>
+            </p> --}}
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -18,33 +18,28 @@
                 <thead>
                   <tr>
                     <th> Name </th>
-                    <th> Website </th>
-                    <th> Image </th>
-                    <th> Status </th>
+                    <th> Email </th>
+                    <th> Phone </th>
+                    <th> Profile </th>
                     <th> Action </th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($companies as $company)
+                    @foreach($users as $user)
                   <tr>
-                    <td> {{ $company->name }} </td>
-                    <td> {{ $company->website_url }} </td>
-
+                    <td> {{ $user->name }} </td>
+                    <td> {{ $user->email }} </td>
+                    <td>
+                      {{$user->phone}}
+                    </td>
                     <td class="py-1">
-                      @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
-                      <img src="{{ asset('logos') }}/{{$company->logo}}" alt="logo">
+                        @if($user->profile)
+                         <img src="{{ asset('images/profile') }}/{{$user->profile}}" alt="image">
                       @endif
                     </td>
                     <td>
-                        @if($company->status === 'active')
-                        <span class="badge bg-success">Active</span>
-                    @else
-                        <span class="badge bg-danger">Inactive</span>
-                    @endif
-                    </td>
-                    <td>
-                    <a href="{{ route('company.edit', $company->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('company.destroy', $company->id) }}" method="POST" style="display:inline;">
+                    {{-- <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a> --}}
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
@@ -53,14 +48,13 @@
                   </tr>
                  @endforeach
                 </tbody>
-                
               </table>
             </div>
           </div>
         </div>
       </div>
       <div class="d-flex justify-content-center">
-        {{ $companies->links('pagination::bootstrap-4') }}
+        {{ $users->links('pagination::bootstrap-4') }}
       </div>
  </div>
 @endsection

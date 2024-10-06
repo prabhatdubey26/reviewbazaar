@@ -27,6 +27,9 @@ class StoreBlogRequest extends FormRequest
             'description' => 'nullable|string', // Description can be nullable
             'status' => 'required|in:active,inactive',
             'category' => 'required', // Ensure valid status
+            'meta_title' => 'nullable|string',   // Meta title can be optional
+            'meta_description' => 'nullable|string',  // Meta description can be optional
+            'meta_key' => 'nullable|string',  
         ];
     }
 

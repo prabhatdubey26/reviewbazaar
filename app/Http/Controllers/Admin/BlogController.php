@@ -12,7 +12,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-       $blogs = Blog::where(['status'=>'active'])->paginate(10);
+       $blogs = Blog::paginate(10);
        return view('admin.blog.index', compact('blogs'));
     }
 
@@ -43,6 +43,9 @@ class BlogController extends Controller
         $blog->category_id = $request->category;
         $blog->slug = $request->title;
         $blog->description = $request->description;
+        $blog->meta_title = $request->meta_title;  
+        $blog->meta_description = $request->meta_description;
+        $blog->meta_key = $request->meta_key;  
         
         // Handle the image upload
         if ($request->hasFile('image')) {
@@ -73,6 +76,9 @@ class BlogController extends Controller
        $blog->description = $request->description;
        $blog->slug = $request->title; 
        $blog->category_id = $request->category ?? '0';
+       $blog->meta_title = $request->meta_title;  
+       $blog->meta_description = $request->meta_description;
+       $blog->meta_key = $request->meta_key;  
         
         if ($request->hasFile('image')) {
             // Remove old image if it exists

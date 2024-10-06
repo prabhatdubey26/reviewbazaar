@@ -27,5 +27,11 @@
         <span class="menu-title">Blogs</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('users.index') }}">
+        <i class="menu-icon fa fa-user"></i>
+        <span class="menu-title">Users</span>
+      </a>
+    </li>
   </ul>
 </nav>
