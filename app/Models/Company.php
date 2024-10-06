@@ -60,7 +60,7 @@ class Company extends Model
 
     public function averageRating()
     {
-        return $this->reviews()->avg('review');
+        return number_format($this->reviews()->avg('review') ?? 0, 2, '.', '');
     }
 
 }
