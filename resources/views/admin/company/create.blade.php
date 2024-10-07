@@ -3,6 +3,16 @@
 <div class="row">
     <div class="card">
         <div class="card-body">
+            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
             <h4 class="card-title">Add Company</h4>
             <a href="{{ route('company.index') }}" class="btn btn-primary">Company List</a>
             <form class="forms-sample mt-3" action="{{ route('company.store') }}" enctype="multipart/form-data" method="POST">
@@ -105,7 +115,7 @@
                 <div class="form-group">
                     <label for="category">Category</label>
                     <select class="form-select mb-4 @error('category') is-invalid @enderror" id="category" name="categories[]" multiple style="height:
-                    100px">
+                    100px" >
                         <option selected disabled>Select category</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ is_array(old('categories')) && in_array($category->id, old('categories')) ? 'selected' : '' }}>{{ $category->name }}</option>

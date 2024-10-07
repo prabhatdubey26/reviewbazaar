@@ -19,7 +19,7 @@ class CompanyController extends Controller
 
     public function review()
     {
-       $companies = Company::withAvg('reviews', 'review')  // Calculate the average review score for each company
+       $companies = Company::withAvg('reviews', 'review')
        ->orderBy('reviews_avg_review','desc')->paginate(20);
        return view('frontend.company.list', compact('companies'));
     }

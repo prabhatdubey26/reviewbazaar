@@ -17,7 +17,6 @@ class StoreCompanyRequest extends FormRequest
             'name' => 'required|string|max:255',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Logo validation
             'about' => 'nullable|string',
-            'verified' => 'boolean',
             'website_url' => 'required',
             'email' => 'required|email',
             'phone' => 'required|string',
@@ -25,7 +24,7 @@ class StoreCompanyRequest extends FormRequest
             'country' => 'nullable|string',
             'city' => 'nullable|string',
             'zip' => 'nullable|string',
-            'category' => 'required|array', // Categories as an array
+            'categories' => 'required|array', // Categories as an array
             'status' => 'required|in:active,inactive',
         ];
     }

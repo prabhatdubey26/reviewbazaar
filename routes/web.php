@@ -18,6 +18,10 @@ Route::post('/signup', [LoginController::class, 'register'])->name('register');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+});
+
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/sub-category/{slug}', [HomeController::class, 'subCategory'])->name('sub-category');

@@ -7,6 +7,8 @@ use App\Models\Page;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Blog;
+use App\Models\User;
+
 
 
 class HomeController extends Controller
@@ -35,6 +37,12 @@ class HomeController extends Controller
     public function signup()
     {
        return view('frontend.signup');
+    }
+
+    public function profile()
+    {
+       $user = User::where('id', Auth()->user()->id)->first();
+       return view('frontend.profile', compact('user'));
     }
 
     public function category()
