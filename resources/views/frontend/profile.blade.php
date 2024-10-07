@@ -76,7 +76,7 @@
                                 <tr>
                                     <th scope="col">Email</th>
                                     <td scope="col">
-                                        <input class="form-control" type="email" name="email" value="{{ old('email', $user->email) }}">
+                                        <input class="form-control" @readonly(true) type="email" name="email" value="{{ old('email', $user->email) }}">
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
