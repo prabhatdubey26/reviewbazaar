@@ -33,7 +33,7 @@
                     <!-- Display Success Message -->
                     @if(session('success'))
                         <div class="alert alert-success">
-                            {{ session('success') }}
+                            <span class="text-success">  {{ session('success') }} </span>
                         </div>
                     @endif
 

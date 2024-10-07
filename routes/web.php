@@ -20,6 +20,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+    Route::post('/profile/update', [HomeController::class, 'updateProfile'])->name('profile.update');
 });
 
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');

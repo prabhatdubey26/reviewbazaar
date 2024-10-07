@@ -7,7 +7,7 @@
             <div class="col-md-7">
                 @if (session('success'))
                     <div class="alert alert-success">
-                        {{ session('success') }}
+                        <span class="text-success">  {{ session('success') }} </span>
                     </div>
                     @endif
                 <div class="row login-page align-items-center d-flex justify-content-between g-0 bg-light">

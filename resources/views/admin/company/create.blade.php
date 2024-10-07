@@ -3,16 +3,6 @@
 <div class="row">
     <div class="card">
         <div class="card-body">
-            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
             <h4 class="card-title">Add Company</h4>
             <a href="{{ route('company.index') }}" class="btn btn-primary">Company List</a>
             <form class="forms-sample mt-3" action="{{ route('company.store') }}" enctype="multipart/form-data" method="POST">

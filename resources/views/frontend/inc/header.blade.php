@@ -29,15 +29,24 @@
       </ul>
       <div class="d-flex ps-5">
         @if(Auth::user())
-        <a href="#" class="mx-1" ><img src="{{ asset('assets/images/icons/user.png')}}" width="20px"></a>
-        <a class="nav-link" href="#">{{ Auth::user()->getInitials() }}</a>
-        <a class="btn btn-primary btn-sm mx-2" href="{{ url('logout') }}" class="mx-1" >
-          Logout
-        </a>
+            <div class="dropdown">
+                <a href="#" style="text-decoration: none" class="mx-1" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('assets/images/icons/user.png')}}" width="20px">
+                    {{ Auth::user()->getInitials() }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="{{ url('profile') }}">View Profile</a></li>
+                    <li>
+                        <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
         @else
-        <a href="#" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="{{ asset('assets/images/icons/user.png')}}" width="20px"></a>
+            <a href="#" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <img src="{{ asset('assets/images/icons/user.png')}}" width="20px">
+            </a>
         @endif
-     </div>
+    </div>    
     </div>
   </div>
 </nav>

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Blog;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -44,6 +45,44 @@ class HomeController extends Controller
        $user = User::where('id', Auth()->user()->id)->first();
        return view('frontend.profile', compact('user'));
     }
+
+   public function updateProfile(Request $request)
+   {
+      $user = Auth::user();
+      $request->validate([
+         'name' => 'required|string|max:255',
+         'phone' => 'nullable|string|max:15',
+         'email' => 'required|email|max:255',
+         'business' => 'nullable|string|max:255',
+         'address' => 'nullable|string|max:255',
+         'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+      ]);
+
+      $user->name = $request->name;
+      $user->phone = $request->phone;
+      $user->email = $request->email;
+      $user->business = $request->business;
+      $user->address = $request->address;
+
+      if ($request->hasFile('profile')) {
+         if ($user->profile_picture) {
+             $oldImagePath = public_path('images/profile/' . $user->profile_picture);
+             if (file_exists($oldImagePath)) {
+                 unlink($oldImagePath);
+             }
+         }
+         $image = $request->file('profile');
+         $imageName = time() . '.' . $image->getClientOriginalExtension();
+         $destinationPath = public_path('images/profile');
+         $image->move($destinationPath, $imageName);
+         $user->profile = $imageName; 
+     }
+
+      $user->save();
+
+      return redirect()->back()->with('success', 'Profile updated successfully!');
+   }
+
 
     public function category()
     {
