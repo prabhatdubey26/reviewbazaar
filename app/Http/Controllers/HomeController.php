@@ -23,7 +23,7 @@ class HomeController extends Controller
        ->orderBy('reviews_avg_review','desc')
        ->take(8) 
        ->get();
-       $newCompanies = Company::where('status', 'active')->latest()->take(2)->get();
+       $newCompanies = Company::where('status', 'active')->latest()->take(8)->get();
        return view('frontend.index', compact('companies','blogs','newCompanies'));
     }
 
