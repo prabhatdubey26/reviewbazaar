@@ -17,10 +17,19 @@ class CompanyController extends Controller
        return view('admin.company.index', compact('companies'));
     }
 
-    public function review()
+    public function review(Request $request)
     {
-       $companies = Company::withAvg('reviews', 'review')
-       ->orderBy('reviews_avg_review','desc')->paginate(20);
+       $query = Company::withAvg('reviews', 'review');
+        if ($request->filled('location')) {
+          $query->where('address', 'like', '%' . $request->location . '%');
+          $query->orWhere('address', 'like', '%' . $request->location . '%');
+          $query->orWhere('city', 'like', '%' . $request->location . '%');
+          $query->orWhere('country', 'like', '%' . $request->location . '%');
+        }
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+        $companies = $query->orderBy('reviews_avg_review','desc')->paginate(20);
        return view('frontend.company.list', compact('companies'));
     }
 

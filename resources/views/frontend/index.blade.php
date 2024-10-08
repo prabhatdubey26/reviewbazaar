@@ -10,11 +10,11 @@
       <div class="col-md-8">
         <div class="heading-wrapper text-center">
           <h1 class="fs-2 fw-semibold text-uppercase px-4 px-lg-0 text-white">Welcome To The Biggest<span class="d-md-block"> Business Directory</span></h1>
-          <form action="" class="fromsa">
+          <form action="{{ route('company.review') }}" class="fromsa">
             <div class="p-4 bg-white rounded rounded-pill shadow-sm my-4 py-2">
               <div class="d-flex align-items-center justify-content-center">
-                <input type="text" placeholder="Location" `="" class="form-control border-0 bg-white">
-                <input type="text" placeholder="Searching Company" class="form-control border-0 bg-white">
+                <input type="text" placeholder="Location" `="" class="form-control border-0 bg-white" name="location">
+                <input type="text" placeholder="Searching Company" class="form-control border-0 bg-white" name="name">
                 <div class="input-group-append btn btn-primary h-100 rounded-pill">
                   <button id="button-addon1" type="submit" class="btn btn-link text-primary"><img src="{{ asset('assets/images/search.png')}}" width="20px" alt=""></button>
                 </div>

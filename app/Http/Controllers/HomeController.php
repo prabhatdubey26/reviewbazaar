@@ -83,7 +83,6 @@ class HomeController extends Controller
       return redirect()->back()->with('success', 'Profile updated successfully!');
    }
 
-
     public function category()
     {
        return view('frontend.category');
