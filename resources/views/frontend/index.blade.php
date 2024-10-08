@@ -54,7 +54,7 @@
   <div class="container">
       <div class="d-flex align-items-center justify-content-between">
             <div class="title-wrap">
-              <h2>Best in Travel Insurance Company</h2>
+              <h2>Latest Business Reviews</h2>
               <p class="mb-0">Explore our Job Portal's to streamline your job search.</p>
            </div>
            <div class="d-none d-md-block">
@@ -112,11 +112,6 @@
       </div>
       <div class="col-md-6">
       <div id="carouselExampleIndicators" class="carousel slide overflow-hidden" data-bs-ride="carousel">
-        <!-- <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div> -->
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="content-wrap">
@@ -172,6 +167,55 @@
       </div>
       </div>
     </div>
+  </div>
+</section>
+<section class="py-6 list-wrapper">
+  <div class="container">
+      <div class="text-center mb-5">
+          <div class="title-wrap m-auto">
+              <h2>New Businesses</h2>
+              <p class="mb-0">Discover the voices of success! Our candidates speak for themselves about their<span class="d-md-block"> transformative experiences</span></p>
+          </div>
+      </div>
+      <div class="row">
+        @foreach($newCompanies as $company)
+          <div class="col-md-6">
+              <div class="list-wraps bg-light p-4 rounded-3 d-flex mb-3 border">
+                  <div class="list-style1">
+                    @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
+                    <img class="img-fluid rounded-3" src="{{ asset('logos/' . $company->logo) }}" width="70px" alt="">
+                    @else
+                        <img class="img-fluid rounded-3" src="{{ asset('assets/images/company/1.png') }}" width="70px" alt="">
+                    @endif
+                  </div>
+                  <div class="list-style1 ps-4 d-flex align-items-center">
+                      <div class="box-styles">
+                          <p><a class="text-decoration-none fs-5 text-dark" href="detail.php">{{ $company->name }}</a></p>
+                          <div id="full-stars-example-two">
+                            <div class="rating-group">
+                              @for ($i = 1; $i <= 5; $i++)
+                              @if ($i <= $company->averageRating())
+                                  <i class="flaticon-star filled"></i> 
+                              @else
+                                  <i class="flaticon-star-empty"></i>
+                              @endif
+                          @endfor
+                         </div>
+                      </div>
+                          <div class="d-flex align-items-center mb-2">
+                              <ul class="mb-0 d-flex">
+                                  <li><a href="#"><i class="flaticon-visibility me-1"></i><span class="ps-2">{{ $company->reviewCount() }}  reviews</span></a></li>
+                                  <li><a href="#"><i class="flaticon-telephone fs-6"></i> <span class="ps-2">{{ $company->phone }}</span></a></li>
+                              </ul>
+                          </div>
+                          <p><i class="flaticon-pin"></i> {{ $company->city ?? '' }}, {{ $company->country ?? ''}}</p>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+        @endforeach
+      </div>
   </div>
 </section>
 <section class="py-5 py-md-6 blog-wrapper">
