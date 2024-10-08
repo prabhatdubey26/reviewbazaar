@@ -89,35 +89,15 @@
                                 <div class="d-flex align-items-center mb-2">
                                   <div id="full-stars-example-two">
                                     <div class="rating-group">
-                                        <!-- Disable and set the average rating as checked -->
-                                        @php
-                                            $averageRating = round($company->averageRating()); // Round the average rating to the nearest whole number
-                                        @endphp
-                                
-                                        <input disabled class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                                        <label aria-label="1 star" class="rating__label" for="rating3-1">
-                                            <i class="rating__icon rating__icon--star flaticon-star"></i>
-                                        </label>
-                                        <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio" {{ $averageRating >= 1 ? 'checked' : '' }}>
-                                        <label aria-label="2 stars" class="rating__label" for="rating3-2">
-                                            <i class="rating__icon rating__icon--star flaticon-star"></i>
-                                        </label>
-                                        <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio" {{ $averageRating >= 2 ? 'checked' : '' }}>
-                                        <label aria-label="3 stars" class="rating__label" for="rating3-3">
-                                            <i class="rating__icon rating__icon--star flaticon-star"></i>
-                                        </label>
-                                        <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio" {{ $averageRating >= 3 ? 'checked' : '' }}>
-                                        <label aria-label="4 stars" class="rating__label" for="rating3-4">
-                                            <i class="rating__icon rating__icon--star flaticon-star"></i>
-                                        </label>
-                                        <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio" {{ $averageRating >= 4 ? 'checked' : '' }}>
-                                        <label aria-label="5 stars" class="rating__label" for="rating3-5">
-                                            <i class="rating__icon rating__icon--star flaticon-star"></i>
-                                        </label>
-                                        <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio" {{ $averageRating >= 5 ? 'checked' : '' }}>
-                                    </div>
+                                      @for ($i = 1; $i <= 5; $i++)
+                                          @if ($i <= $company->averageRating())
+                                              <i class="flaticon-star filled"></i> 
+                                          @else
+                                              <i class="flaticon-star-empty"></i>
+                                          @endif
+                                      @endfor
+                                  </div>
                                 </div>
-                                
                                   <ul class="ms-4 mb-0 d-flex">
                                     <li><a href="#"><i class="flaticon-visibility me-1"></i><span class="ps-2"> {{ $company->reviewCount() }} reviews</span></a></li>
                                     <li><a href="#"><i class="flaticon-telephone fs-6"></i> <span class="ps-2">{{ $company->phone }}</span></a></li>

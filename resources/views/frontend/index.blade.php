@@ -79,15 +79,15 @@
                   </div>
                   <p class="text-primary">{{ $company->about }}</p>
                   <div id="full-stars-example-two">
-                      <div class="rating-group">
-                        @for ($i = 1; $i <= 5; $i++)
-                        @if ($i <= $company->averageRating())
-                            <i class="flaticon-star filled"></i> 
-                        @else
-                            <i class="flaticon-star-empty"></i>
-                        @endif
-                    @endfor
-                   </div>
+                    <div class="rating-group">
+                      @for ($i = 1; $i <= 5; $i++)
+                          @if ($i <= $company->averageRating())
+                              <i class="fas fa-star" style="color: orange;"></i> <!-- Filled star -->
+                          @else
+                              <i class="far fa-star" style="color: lightgray;"></i> <!-- Empty star -->
+                          @endif
+                      @endfor
+                  </div>
                 </div>
             </div>
           </a>
@@ -190,18 +190,18 @@
                   </div>
                   <div class="list-style1 ps-4 d-flex align-items-center">
                       <div class="box-styles">
-                          <p><a class="text-decoration-none fs-5 text-dark" href="detail.php">{{ $company->name }}</a></p>
+                          <p><a class="text-decoration-none fs-5 text-dark" href="{{ url('company', $company->website_url) }}">{{ $company->name }}</a></p>
                           <div id="full-stars-example-two">
                             <div class="rating-group">
                               @for ($i = 1; $i <= 5; $i++)
-                              @if ($i <= $company->averageRating())
-                                  <i class="flaticon-star filled"></i> 
-                              @else
-                                  <i class="flaticon-star-empty"></i>
-                              @endif
-                          @endfor
-                         </div>
-                      </div>
+                                  @if ($i <= $company->averageRating())
+                                      <i class="fas fa-star" style="color: orange;"></i> <!-- Filled star -->
+                                  @else
+                                      <i class="far fa-star" style="color: lightgray;"></i> <!-- Empty star -->
+                                  @endif
+                              @endfor
+                          </div>
+                          </div>
                           <div class="d-flex align-items-center mb-2">
                               <ul class="mb-0 d-flex">
                                   <li><a href="#"><i class="flaticon-visibility me-1"></i><span class="ps-2">{{ $company->reviewCount() }}  reviews</span></a></li>

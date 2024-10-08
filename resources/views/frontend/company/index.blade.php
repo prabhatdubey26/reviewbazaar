@@ -92,20 +92,18 @@
                                     {{ $review->user->getInitials() }}
                                 </div>
                                 <div class="ps-3">
-                                    <h6 class="mb-0">{{ $review->user->name }}</h6>
+                                    <h6 class="mb-1">{{ $review->user->name }}</h6>
                                    {{-- Assuming $review->review is an integer from 1 to 5 --}}
-                                
                                     <div id="full-stars-example-two">
                                       <div class="rating-group">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        @if ($i <= $review->review)
-                                            <i class="flaticon-star filled"></i>  {{-- Full star with yellow fill --}}
-                                        @else
-                                            <i class="flaticon-star-empty"></i>  {{-- Empty star --}}
-                                        @endif
-                                    @endfor
-                                    {{ $review->review }} Rating *
-                                      </div>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $company->averageRating())
+                                                <i class="fas fa-star" style="color: orange;"></i> <!-- Filled star -->
+                                            @else
+                                                <i class="far fa-star" style="color: lightgray;"></i> <!-- Empty star -->
+                                            @endif
+                                        @endfor
+                                    </div>
                                     </div>
                                 </div>
                             </div>

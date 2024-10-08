@@ -50,14 +50,14 @@
                     <p class="text-primary">{{ $company->about }}</p>
                     <div id="full-stars-example-two">
                         <div class="rating-group">
-                          @for ($i = 1; $i <= 5; $i++)
-                          @if ($i <= $company->averageRating())
-                              <i class="flaticon-star filled"></i> 
-                          @else
-                              <i class="flaticon-star-empty"></i>
-                          @endif
-                      @endfor
-                     </div>
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= $company->averageRating())
+                                    <i class="fas fa-star" style="color: orange;"></i> <!-- Filled star -->
+                                @else
+                                    <i class="far fa-star" style="color: lightgray;"></i> <!-- Empty star -->
+                                @endif
+                            @endfor
+                        </div>
                   </div>
               </div>
             </a>
