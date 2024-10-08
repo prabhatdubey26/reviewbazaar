@@ -27,7 +27,7 @@
     <div class="container">
         <div class="d-flex align-items-center justify-content-center">
             <div class="title-wrap">
-              <h2>Best in Travel Insurance Company</h2>
+              <h2>Latest Business Reviews</h2>
               <p class="mb-0">Explore our Job Portal's to streamline your job search.</p>
            </div>
        </div>
