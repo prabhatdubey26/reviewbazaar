@@ -21,6 +21,8 @@
                     <th> Email </th>
                     <th> Phone </th>
                     <th> Profile </th>
+                    <th> Business </th>
+                    <th> Address </th>
                     <th> Action </th>
                   </tr>
                 </thead>
@@ -33,9 +35,17 @@
                       {{$user->phone}}
                     </td>
                     <td class="py-1">
-                        @if($user->profile)
-                         <img src="{{ asset('images/profile') }}/{{$user->profile}}" alt="image">
+                      @if($user->profile && file_exists(public_path('images/profile/' . $user->profile)))
+                      <img src="{{ asset('images/profile/' . $user->profile) }}"  alt="">
+                      @else
+                          <img src="{{ asset('assets/images/user.jpg') }}"  alt="">
                       @endif
+                    </td>
+                    <td>
+                      {{$user->business}}
+                    </td>
+                    <td>
+                      {{$user->address}}
                     </td>
                     <td>
                     {{-- <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a> --}}
