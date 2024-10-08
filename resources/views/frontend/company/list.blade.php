@@ -32,6 +32,11 @@
            </div>
        </div>
     <div class="row g-4 pt-5">
+        @if($companies->isEmpty())
+        <div class="no-companies bg-white p-4 rounded-3 text-center mb-3">
+            <p class="fs-5 text-dark">No companies found.</p>
+        </div>
+        @else
         @foreach($companies as $company)
         <div class="col-xl-3 col-md-6">
             <a href="{{ url('company', $company->website_url) }}" class="text-decoration-none">
@@ -63,6 +68,7 @@
             </a>
         </div>
        @endforeach
+       @endif
        <div class="d-flex justify-content-center mt-4">
         {{ $companies->links('pagination::bootstrap-4') }}
       </div>
