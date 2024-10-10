@@ -31,7 +31,6 @@
         @if(Auth::user())
             <div class="dropdown">
                 <a href="#" style="text-decoration: none" class="mx-1" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('assets/images/icons/user.png')}}" width="20px">
                     {{ Auth::user()->getInitials() }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
