@@ -53,6 +53,7 @@
                         </div>
                     </div>
                     <p class="text-primary">{{ $company->about }}</p>
+                    <p><i class="flaticon-pin"></i> {{ $company->city }}, {{ $company->country }}</p>
                     <div id="full-stars-example-two">
                         <div class="rating-group">
                             @for ($i = 1; $i <= 5; $i++)
