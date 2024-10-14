@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.min.css')}}">
     <link rel="stylesheet" href="{{ asset('font/flaticon_alcebo.css')}}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css')}}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.css')}}">
     <script async src="https://www.google.com/recaptcha/api.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
