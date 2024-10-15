@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="pt-2">
-                <p class="mb-0">{{ $review->comment }}!</p>
+                <p class="mb-0">{!! \Illuminate\Support\Str::limit(strip_tags($review->comment), 100, '...') !!}!</p>
             </div>
         </div>
       </div>
