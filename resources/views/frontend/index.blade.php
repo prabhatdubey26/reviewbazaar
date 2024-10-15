@@ -82,7 +82,7 @@
                         @endfor
                     </div>
                     </div>
-                    <a class="small" href="#">{{ $review->company->website_url }}</a>
+                    <a class="small" href="{{ url('company', $review->company->website_url) }}">{{ $review->company->website_url }}</a>
                 </div>
             </div>
             <div class="pt-2">
