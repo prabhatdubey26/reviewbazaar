@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Blog;
 use App\Models\User;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -24,7 +25,8 @@ class HomeController extends Controller
        ->take(8) 
        ->get();
        $newCompanies = Company::where('status', 'active')->latest()->take(8)->get();
-       return view('frontend.index', compact('companies','blogs','newCompanies'));
+       $reviews = Review::latest()->with(['company','user'])->take(8)->get();
+       return view('frontend.index', compact('companies','blogs','newCompanies','reviews'));
     }
 
     public function blog()
@@ -33,6 +35,12 @@ class HomeController extends Controller
        $categories = Category::latest()->where(['status'=> 'active'])->take(6)->get();
        $recentBlogs = Blog::latest()->where(['status'=> 'active'])->take(3)->get();
        return view('frontend.blog.index', compact('blogs','categories','recentBlogs'));
+    }
+
+    public function reviewList()
+    {   
+      $reviews = Review::latest()->with(['company','user'])->paginate(12);
+      return view('frontend.review.list', compact('reviews'));
     }
 
     public function signup()

@@ -50,123 +50,136 @@
     </div>
   </div>
 </section>
-<section class="copmany-wrapper py-6">
+<section class="copmany-wrapper py-6 bg-light">
   <div class="container">
-      <div class="d-flex align-items-center justify-content-between">
-            <div class="title-wrap">
-              <h2>Latest Business Reviews</h2>
-              <p class="mb-0">Explore our Job Portal's to streamline your job search.</p>
-           </div>
-           <div class="d-none d-md-block">
-              <a class="btn btn-primary rounded-pill btn-lg" href="{{ route('company.review') }}">See more</a>
-           </div>
-       </div>
-    <div class="row g-4 pt-5">
-      @foreach($companies as $company)
-      <div class="col-xl-3 col-md-6">
-          <a href="{{ url('company', $company->website_url) }}" class="text-decoration-none">
-            <div class="list-box">
-                 <div class="list-company"> 
-                      @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
-                          <img src="{{ asset('logos/' . $company->logo) }}" width="70px" alt="">
-                      @else
-                          <img src="{{ asset('assets/images/company/1.png') }}" width="70px" alt="">
-                      @endif
-                      <div>
-                        <span class="ps-3 text-dark">{{ $company->name }}</span>
-                        <span class="ps-3 small text-primary">{{ $company->website_url }}</span>
-                      </div>
-                  </div>
-                  <p class="text-primary">{{ $company->about }}</p>
-                  <div id="full-stars-example-two">
-                    <div class="rating-group">
-                      @for ($i = 1; $i <= 5; $i++)
-                          @if ($i <= $company->averageRating())
-                              <i class="fas fa-star" style="color: orange;"></i> <!-- Filled star -->
-                          @else
-                              <i class="far fa-star" style="color: lightgray;"></i> <!-- Empty star -->
-                          @endif
-                      @endfor
-                  </div>
+      <div class="d-flex align-items-center justify-content-between pb-5">
+          <div class="title-wrap">
+            <h2>Latest Business Reviews</h2>
+            <p class="mb-0">Explore our Job Portal's to streamline your job search.</p>
+          </div>
+          <div class="d-none d-md-block">
+            <a class="btn btn-primary rounded-pill btn-lg" href="{{ route('review-list') }}">See more</a>
+          </div>
+      </div>
+    <div class="row reviews-warp">
+     @foreach($reviews as $review)
+      <div class="col-md-3">
+        <div class="p-3 rounded-3 bg-white border">
+            <div class="d-flex align-items-start">
+                <div class="user-iconss bg-primary p-2 rounded-circle text-white" style="width:40px; height:40px">
+                  {{ $review->user->getInitials() }}
+                </div>
+                <div class="ps-3">
+                    <h6 class="mb-1">{{ $review->user->name }}</h6>
+                    <div id="full-stars-example-two">
+                      <div class="rating-group pb-2">
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <= $review->review)
+                                <i class="fas fa-star" style="color: orange;"></i> <!-- Filled star -->
+                            @else
+                                <i class="far fa-star" style="color: lightgray;"></i> <!-- Empty star -->
+                            @endif
+                        @endfor
+                    </div>
+                    </div>
+                    <a class="small" href="#">{{ $review->company->website_url }}</a>
                 </div>
             </div>
-          </a>
+            <div class="pt-2">
+                <p class="mb-0">{{ $review->comment }}!</p>
+            </div>
+        </div>
       </div>
-     @endforeach
+      @endforeach
     </div>
   </div>
 </section>
-<section class="testimonial-wrapper py-5">
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+        <div class="title-wrap m-auto">
+          <h2>Looking for a local business?</h2>
+          <p class="mb-0">Discover the voices of success! Our candidates speak for themselves about their<span class="d-md-block"> transformative experiences</span></p>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="p-4 bg-light rounded-3 shadow-sm text-center h-100">
+          <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center" style="width:60px; height:60px; margin: auto;"><img src="assets/images/options.png" width="35px" alt=""></div>
+          <h4 class="pt-3">Multiple options</h4>
+          <p class="mb-0">You will get multiple options to choose from for your classified searches. Also, you can see reviews and ratings by the people.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 bg-light rounded-3 shadow-sm text-center h-100">
+          <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center" style="width:60px; height:60px; margin: auto;"><img src="assets/images/easy-installation.png" width="35px" alt=""></div>
+          <h4 class="pt-3">Easy to find</h4>
+          <p class="mb-0">Just fill in your requirements and location and get the list of the best service providers near you suitable to your needs.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 bg-light rounded-3 shadow-sm text-center h-100">
+          <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center" style="width:60px; height:60px; margin: auto;"><img src="assets/images/integration.png" width="35px" alt=""></div>
+          <h4 class="pt-3">It's very local</h4>
+          <p class="mb-0">We make your search for a particular local service easy and convenient with our easy to find functions.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 bg-light rounded-3 shadow-sm text-center h-100">
+          <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center" style="width:60px; height:60px; margin: auto;"><img src="assets/images/customer-service.png" width="35px" alt=""></div>
+          <h4 class="pt-3">24/7 support system</h4>
+          <p class="mb-0">When you submit any query to us, we try our best to respond as soon as possible. We are active 24/7.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="list-wrapper py-5 bg-light">
   <div class="container">
          <div class="text-center mb-5">
             <div class="title-wrap m-auto">
-              <h2>What Our Candidates Say</h2>
+              <h2>Feature Business</h2>
               <p class="mb-0">Discover the voices of success! Our candidates speak for themselves about their<span class="d-md-block"> transformative experiences</span></p>
            </div>
         </div>
     <div class="row align-items-center">
-      <div class="col-md-6">
-        <div>
-          <img src="{{ asset('assets/images/test-img.png')}}" class="img-fluid" alt="">
-        </div>
-      </div>
-      <div class="col-md-6">
-      <div id="carouselExampleIndicators" class="carousel slide overflow-hidden" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="content-wrap">
-              <div class="clients-wrapper mb-5">
-                <p>This job portal is a game-changer! The detailed job listings and comprehensive profiles give a clear picture of what employers are looking for. The blog section with career advice is an excellent added bonus.</p>
-                <p>The platform's commitment to user success is evident. The email alerts for application status updates keep you in the loop.</p>
+    @foreach($companies as $company)
+    <div class="col-md-6">
+              <div class="list-wraps bg-white p-3 rounded-3 d-flex mb-3 border">
+                  <div class="list-style1 bg-light p-2 rounded-3">
+                 @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
+                    <img class="img-fluid rounded-3" src="{{ asset('logos/' . $company->logo) }}" width="70px" alt="">
+                    @else
+                        <img class="img-fluid rounded-3" src="{{ asset('assets/images/company/1.png') }}" width="70px" alt="">
+                    @endif
+                                      </div>
+                  <div class="list-style1 ps-4 d-flex align-items-center">
+                      <div class="box-styles">
+                          <p class="mb-1"><a class="text-decoration-none fs-5 text-dark" href="{{ url('company', $company->website_url) }}">{{ $company->name }}</a></p>
+                          <div id="full-stars-example-two">
+                            <div class="rating-group pb-2">
+                              @for ($i = 1; $i <= 5; $i++)
+                                  @if ($i <= $company->averageRating())
+                                      <i class="fas fa-star" style="color: orange;"></i> <!-- Filled star -->
+                                  @else
+                                      <i class="far fa-star" style="color: lightgray;"></i> <!-- Empty star -->
+                                  @endif
+                              @endfor
+                          </div>
+                          <div class="d-flex align-items-center mb-2">
+                              <ul class="mb-0 d-flex">
+                                  <li><a href="#"><i class="flaticon-visibility me-1"></i><span class="ps-2">{{ $company->reviewCount() }}   reviews</span></a></li>
+                                  <li><a href="#"><i class="flaticon-telephone fs-6"></i> <span class="ps-2">{{ $company->phone }}</span></a></li>
+                              </ul>
+                          </div>
+                          <p><i class="flaticon-pin"></i> {{ $company->city ?? '' }}, {{ $company->country ?? ''}}</p>
+                      </div>
+
+                  </div>
               </div>
-              <div class="user-img ms-5">
-                <div class="d-flex align-items-center">
-                  <img src="{{ asset('assets/images/user.jpg')}}" alt="">
-                  <h5 class="ps-3">Jonathon Smith <span class="d-block"> Marketing Specialist</span></h5>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="carousel-item">
-          <div class="content-wrap">
-              <div class="clients-wrapper mb-5">
-                <p>This job portal is a game-changer! The detailed job listings and comprehensive profiles give a clear picture of what employers are looking for. The blog section with career advice is an excellent added bonus.</p>
-                <p>The platform's commitment to user success is evident. The email alerts for application status updates keep you in the loop.</p>
-              </div>
-              <div class="user-img ms-5">
-                <div class="d-flex align-items-center">
-                  <img src="{{ asset('assets/images/user.jpg')}}" alt="">
-                  <h5 class="ps-3">Jonathon Smith <span class="d-block"> Marketing Specialist</span></h5>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="content-wrap">
-              <div class="clients-wrapper mb-5">
-                <p>This job portal is a game-changer! The detailed job listings and comprehensive profiles give a clear picture of what employers are looking for. The blog section with career advice is an excellent added bonus.</p>
-                <p>The platform's commitment to user success is evident. The email alerts for application status updates keep you in the loop.</p>
-              </div>
-              <div class="user-img ms-5">
-                <div class="d-flex align-items-center">
-                  <img src="{{ asset('assets/images/user.jpg')}}" alt="">
-                  <h5 class="ps-3">Jonathon Smith <span class="d-block"> Marketing Specialist</span></h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      </div>
     </div>
+    @endforeach
   </div>
 </section>
 <section class="py-6 list-wrapper">
@@ -180,8 +193,8 @@
       <div class="row">
         @foreach($newCompanies as $company)
           <div class="col-md-6">
-              <div class="list-wraps bg-light p-4 rounded-3 d-flex mb-3 border">
-                  <div class="list-style1">
+              <div class="list-wraps bg-light p-3 rounded-3 d-flex mb-3 border">
+                  <div class="list-style1 bg-white p-2 rounded-3">
                     @if($company->logo && file_exists(public_path('logos/' . $company->logo)))
                     <img class="img-fluid rounded-3" src="{{ asset('logos/' . $company->logo) }}" width="70px" alt="">
                     @else
@@ -190,8 +203,8 @@
                   </div>
                   <div class="list-style1 ps-4 d-flex align-items-center">
                       <div class="box-styles">
-                          <p><a class="text-decoration-none fs-5 text-dark" href="{{ url('company', $company->website_url) }}">{{ $company->name }}</a></p>
-                          <div id="full-stars-example-two">
+                          <p class="mb-1"><a class="text-decoration-none fs-5 text-dark" href="{{ url('company', $company->website_url) }}">{{ $company->name }}</a></p>
+                          <div id="full-stars-example-two" class="mb-2">
                             <div class="rating-group">
                               @for ($i = 1; $i <= 5; $i++)
                                   @if ($i <= $company->averageRating())
@@ -218,7 +231,7 @@
       </div>
   </div>
 </section>
-<section class="py-5 py-md-6 blog-wrapper">
+<section class="py-5 py-md-6 blog-wrapper bg-light">
   <div class="container">
       <div class="text-center mb-5">
             <div class="title-wrap m-auto">

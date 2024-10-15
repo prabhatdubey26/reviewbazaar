@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/latest-reviews', [HomeController::class, 'reviewList'])->name('review-list');
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/sub-category/{slug}', [HomeController::class, 'subCategory'])->name('sub-category');
 Route::get('/review/{slug}', [ReviewController::class, 'review'])->name('review');
