@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @yield('meta')
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.png')}}">
-    <title>Review Bazzar</title>
+    <title>Review Bazaar @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/app.min.css')}}">
     <link rel="stylesheet" href="{{ asset('font/flaticon_alcebo.css')}}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">

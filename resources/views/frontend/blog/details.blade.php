@@ -1,14 +1,17 @@
 @extends('frontend.inc.layout')
+@section('title')
+- {{ $blog->title }} 
+@endsection
 @section('meta')
-<meta property="og:title" content="{{ $blog->meta_title ?? $blog->title }}" />
-<meta property="og:description" content="{{$blog->meta_description ?? html_entity_decode($blog->description) }}" />
-@if($blog->image && file_exists(public_path('images/blog/' . $blog->image)))
-<meta property="og:image" content="{{ asset('images/blog/' . $blog->image) }}"  alt="image"/>
-@endif
-<meta property="og:url" content="{{ url('/blog', $blog->slug) }}" />
-<meta property="og:keywords" content="{{ $blog->meta_key }}" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="{{ $blog->created_at->toRfc3339String() }}" />
+    <meta property="og:title" content="{{ $blog->meta_title ?? $blog->title }}" />
+    <meta property="og:description" content="{{$blog->meta_description ?? html_entity_decode($blog->description) }}" />
+    @if($blog->image && file_exists(public_path('images/blog/' . $blog->image)))
+    <meta property="og:image" content="{{ asset('images/blog/' . $blog->image) }}"  alt="image"/>
+    @endif
+    <meta property="og:url" content="{{ url('/blog', $blog->slug) }}" />
+    <meta property="og:keywords" content="{{ $blog->meta_key }}" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="{{ $blog->created_at->toRfc3339String() }}" />
 @endsection
 @section('content')
 <section class="post-details py-5">
