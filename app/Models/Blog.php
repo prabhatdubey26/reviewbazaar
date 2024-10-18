@@ -16,7 +16,10 @@ class Blog extends Model
     {
         $slug = Str::slug($value);
         $originalSlug = $slug;
-
+        if ($this->exists && !$this->isDirty('slug')) {
+            // If not creating or slug isn't dirty, return
+            return;
+        }
         $i = 1;
         while (self::where('slug', $slug)->exists()) {
             $slug = $originalSlug . '-' . $i;

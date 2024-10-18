@@ -1,6 +1,6 @@
 @extends('frontend.inc.layout')
 @section('title')
-- {{ $blog->title }} 
+{{ $blog->title }} 
 @endsection
 @section('meta')
     <meta property="og:title" content="{{ $blog->meta_title ?? $blog->title }}" />
