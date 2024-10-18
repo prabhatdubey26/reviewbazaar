@@ -16,16 +16,18 @@ class Blog extends Model
     {
         $slug = Str::slug($value);
         $originalSlug = $slug;
-        if ($this->exists && !$this->isDirty('slug')) {
-            // If not creating or slug isn't dirty, return
-            return;
-        }
-        $i = 1;
-        while (self::where('slug', $slug)->exists()) {
-            $slug = $originalSlug . '-' . $i;
-            $i++;
+
+        // Generate a unique slug only if the title is being changed
+        if ($this->exists && $this->isDirty('title')) {
+            // Ensure slug is unique
+            $i = 1;
+            while (self::where('slug', $slug)->where('id', '!=', $this->id)->exists()) {
+                $slug = $originalSlug . '-' . $i;
+                $i++;
+            }
         }
 
+        // Assign the unique slug to the attribute
         $this->attributes['slug'] = $slug;
     }
     
