@@ -175,7 +175,10 @@
             <div class="map bg-white p-2 mt-3 rounded-3">
               <h4 class="mb-2">Location Map</h4>
               <div class="map-iframe">
+                @if($company->map)
                 {!! $company->map !!}
+                @else
+                Map not avaible 
               </div>  
         </div>
       </div>
