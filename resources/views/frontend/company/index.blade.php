@@ -179,6 +179,7 @@
                 {!! $company->map !!}
                 @else
                 Map not avaible 
+                @endif
               </div>  
         </div>
       </div>
