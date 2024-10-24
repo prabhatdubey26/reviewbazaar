@@ -24,6 +24,7 @@ class StoreCompanyRequest extends FormRequest
             'country' => 'nullable|string',
             'city' => 'nullable|string',
             'zip' => 'nullable|string',
+            'map' => 'nullable|string',
             'categories' => 'required|array', // Categories as an array
             'status' => 'required|in:active,inactive',
         ];

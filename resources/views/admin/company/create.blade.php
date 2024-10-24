@@ -55,6 +55,13 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label for="map">Map</label>
+                    <input type="text" class="form-control @error('map') is-invalid @enderror" id="map" name="map" placeholder="Enter map" value="{{ old('map') }}">
+                    @error('map')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <div class="form-group row">
                     <div class="col-6">

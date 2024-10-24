@@ -1,5 +1,8 @@
 @extends('frontend.inc.layout')
 
+@section('title')
+{{$company->name}}
+@endsection
 @section('content')
 
 <section class="hero-banner-inner">
@@ -8,7 +11,7 @@
         <div class="col-md-7">
             <div class="heading-wrapper">
               <div class="text-center text-white">
-                <h1 class="fw-semibold px-4 px-lg-0 fs-4 text-uppercase text-white">Company Details</h1>
+                <h1 class="fw-semibold px-4 px-lg-0 fs-4 text-uppercase text-white">{{$company->name}}</h1>
                 <p>Compare the best companies in this category</p>
               </div> 
              </div>
@@ -167,7 +170,13 @@
              </h6>
              <p>{{ $company->about }} </p>
              </div>
+           
           </div>
+            <div class="map bg-white p-2 mt-3 rounded-3">
+              <h4 class="mb-2">Location Map</h4>
+              <div class="map-iframe">
+                {!! $company->map !!}
+              </div>  
         </div>
       </div>
     </div>

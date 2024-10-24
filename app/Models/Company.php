@@ -25,6 +25,7 @@ class Company extends Model
         'zip',
         'category',
         'status',
+        'map'
     ];
 
 
