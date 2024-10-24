@@ -178,7 +178,7 @@
                 @if($company->map)
                 {!! $company->map !!}
                 @else
-                Map not avaible 
+                Map not available.
                 @endif
               </div>  
         </div>
