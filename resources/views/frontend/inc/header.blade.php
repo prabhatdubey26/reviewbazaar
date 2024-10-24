@@ -34,7 +34,7 @@
                     {{ Auth::user()->getInitials() }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="{{ url('profile') }}">View Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('user.profile') }}">View Profile</a></li>
                     <li>
                         <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                     </li>

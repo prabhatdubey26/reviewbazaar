@@ -25,7 +25,8 @@ class User extends Authenticatable
         'business',
         'profile',
         'phone',
-        'address'
+        'address',
+        'about'
     ];
 
     /**

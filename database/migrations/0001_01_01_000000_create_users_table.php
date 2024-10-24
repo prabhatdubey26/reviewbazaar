@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('social_type')->nullable();
             $table->string('phone')->nullable();
             $table->string('profile')->nullable();
+            $table->text('about')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

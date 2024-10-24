@@ -1,27 +1,40 @@
 @extends('frontend.inc.layout')
-
+@section('title', 'Edit Profile')
 @section('content')
-<section class="hero-banner-inner">
+<section class="bg-primary py-5">
     <div class="container">
-        <div class="row align-items-center justify-content-center pt-5">
-            <div class="col-md-7">
-                <div class="heading-wrapper">
-                    <div class="text-center text-white">
-                        <h1 class="fw-semibold px-4 px-lg-0 fs-4 text-uppercase text-white">User Profile</h1>
-                        <p>Compare the best companies in this category</p>
-                    </div> 
+      <div class="row align-items-cneter justify-content-center">
+        <div class="col-md-7">
+            <div class="heading-wrapper">
+              <div class="text-center text-white">
+                <div class="profile position-relative m-auto" style="max-width:20%">
+                    @if($user->profile && file_exists(public_path('images/profile/' . $user->profile)))
+                    <img src="{{ asset('images/profile/' . $user->profile) }}" class="rounded-1 border-2 border-light" width="100%" height="120px" style="object-fit: cover;"  alt="">
+                    @else
+                        <img src="{{ asset('assets/images/user.jpg') }}" class="rounded-1 border-2 border-light" width="100%" height="120px" style="object-fit: cover;"  alt="">
+                    @endif
+                   <div class="position-absolute top-0 end-0">
+                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="assets/images/settings.png" class="bg-primary p-1 rounded-2" width="25px" alt="">
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{{ url('profile') }}">Edit</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="navbars pt-4">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">User Profile</a></li>
-                    </ul>
+               
+                <div class="pt-4">
+                  <h1 class="fw-semibold px-4 px-lg-0 fs-4 text-uppercase text-white">{{ $user->name }}</h1>
+                  <ul class="list-unstyled">
+                    <li><a class="text-white text-decoration-none" href="#">{{ $user->email }}</a></li>
+                  </ul>
                 </div>
-            </div> 
-        </div>
+              </div> 
+            </div>
+        </div> 
+      </div>
     </div>
-</section>
-
+  </section>
 <section class="py-5">
     <div class="container">
         @if(session('success'))
@@ -48,6 +61,16 @@
                                 <span>Business:</span>
                                 <span class="ms-2">{{ $user->business ?? 'N/A' }}</span>
                             </h6>
+                            @foreach($companies as $company)
+                            <p class="mb-1">
+                              Business Category :-
+                              @foreach($company->category_names as $category)
+                              {{ $category }} @if (!$loop->last), @endif
+                          @endforeach
+                                
+                            </p>
+                            <p>({{$company->name}})</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -96,6 +119,17 @@
                                     <td scope="col">
                                         <input class="form-control" type="text" name="address" value="{{ old('address', $user->address) }}">
                                         @error('address')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">About us</th>
+                                    <td scope="col">
+                                        <textarea class="form-control" name="about">
+                                        {{ old('about', $user->about) }}
+                                        </textarea>
+                                        @error('about')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </td>

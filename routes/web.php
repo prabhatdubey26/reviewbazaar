@@ -19,6 +19,7 @@ Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::middleware(['auth'])->group(function () {
+    Route::get('/user-profile', [HomeController::class, 'userProfile'])->name('user.profile');
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [HomeController::class, 'updateProfile'])->name('profile.update');
 });

@@ -49,10 +49,24 @@ class HomeController extends Controller
     }
 
     public function profile()
-    {
+   {
        $user = User::where('id', Auth()->user()->id)->first();
-       return view('frontend.profile', compact('user'));
+       $companies = Company::whereIn('id', 
+        Review::where('user_id', $user->id)
+               ->pluck('company_id')
+    )->distinct()->get();
+       return view('frontend.profile', compact('user','companies'));
     }
+
+    public function userProfile()
+    {
+        $user = User::where('id', Auth()->user()->id)->first();
+        $companies = Company::whereIn('id', 
+        Review::where('user_id', $user->id)
+               ->pluck('company_id')
+    )->distinct()->get();
+        return view('frontend.user-profile', compact('user','companies'));
+     }
 
    public function updateProfile(Request $request)
    {
@@ -63,6 +77,7 @@ class HomeController extends Controller
          'email' => 'required|email|max:255',
          'business' => 'nullable|string|max:255',
          'address' => 'nullable|string|max:255',
+         'about' => 'nullable|string',
          'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
       ]);
 
@@ -71,6 +86,7 @@ class HomeController extends Controller
       $user->email = $request->email;
       $user->business = $request->business;
       $user->address = $request->address;
+      $user->about = $request->about;
 
       if ($request->hasFile('profile')) {
          if ($user->profile_picture) {
